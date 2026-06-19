@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zoya Faraz | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500;600;700;800&family=Caveat:wght@600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET & TOKENS ============ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: auto; }
+
+  :root {
+    --lavender: #F4F0FB;
+    --lavender-deep: #E7DDF7;
+    --blush: #FDEEF6;
+    --blush-deep: #FAD9EA;
+    --sky: #EAF4FC;
+    --sky-deep: #D8ECFB;
+    --paper: #FFFFFF;
+    --ink: #211A33;
+    --ink-soft: #6A6280;
+    --ink-faint: #9890AC;
+    --violet: #7C5CFA;
+    --violet-deep: #5B3DE0;
+    --coral: #FF6F8F;
+    --coral-deep: #E14F73;
+    --blue: #4FA3E3;
+    --blue-deep: #2D7FC4;
+    --sage: #4FAE8C;
+    --line: #E3DBF3;
+    --shadow: rgba(124, 92, 250, 0.16);
+    --r-lg: 24px;
+    --r-md: 16px;
+    --r-sm: 10px;
+    --sidebar-w: 282px;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--lavender);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img, svg { display: block; max-width: 100%; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  .script {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    color: var(--coral-deep);
+    font-size: 1.18em;
+    display: inline-block;
+    transform: rotate(-3deg);
+    padding: 0 2px;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  :focus-visible {
+    outline: 2.5px solid var(--violet);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ============ LAYOUT ============ */
+  .layout { display: flex; min-height: 100vh; }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(170deg, var(--lavender-deep) 0%, var(--blush-deep) 100%);
+    border-right: 1px solid var(--line);
+    padding: 34px 26px 24px;
+    z-index: 50;
+    overflow-y: auto;
+  }
+
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .monogram {
+    width: 50px; height: 50px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--violet), var(--coral));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: 17px; letter-spacing: 0;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px -4px rgba(124,92,250,0.45);
+  }
+  .brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .brand-name { font-size: 17px; font-weight: 700; line-height: 1.2; }
+  .brand-role { font-size: 11.5px; color: var(--ink-soft); line-height: 1.3; }
+
+  .grad-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--coral);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 7px 12px;
+    border-radius: 999px;
+    margin-bottom: 26px;
+    width: fit-content;
+  }
+  .grad-badge svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .status-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11.5px; color: var(--ink-soft);
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sage);
+    box-shadow: 0 0 0 0 rgba(79,174,140,0.6);
+    animation: pulseDot 2.2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 rgba(79,174,140,0.45); }
+    70% { box-shadow: 0 0 0 7px rgba(79,174,140,0); }
+    100% { box-shadow: 0 0 0 0 rgba(79,174,140,0); }
+  }
+
+  .side-nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+  .side-nav a {
+    display: flex; align-items: center; gap: 11px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13.6px; font-weight: 500;
+    color: var(--ink-soft);
+    border-left: 3px solid transparent;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .side-nav a .idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--ink-faint);
+    width: 18px; flex-shrink: 0;
+  }
+  .side-nav a:hover { background: rgba(255,255,255,0.55); color: var(--ink); }
+  .side-nav a.active {
+    background: var(--paper);
+    color: var(--violet-deep);
+    font-weight: 700;
+    border-left: 3px solid var(--violet);
+    box-shadow: 0 3px 10px -4px rgba(124,92,250,0.3);
+  }
+  .side-nav a.active .idx { color: var(--violet); }
+
+  .side-foot { padding-top: 18px; margin-top: 10px; border-top: 1px solid var(--line); }
+  .side-foot-label { font-size: 11px; color: var(--ink-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+  .icon-row { display: flex; gap: 10px; }
+  .icon-btn {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-soft);
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  }
+  .icon-btn svg { width: 19px; height: 19px; }
+  .icon-btn:hover { background: var(--violet); color: #fff; border-color: var(--violet); transform: translateY(-2px); }
+
+  /* ============ MOBILE TOP NAV ============ */
+  .mobile-bar { display: none; }
+
+  /* ============ MAIN ============ */
+  main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; overflow: hidden; }
+
+  section { padding: 100px 64px; position: relative; }
+  .wrap { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; }
+
+  .bg-lavender { background: var(--lavender); }
+  .bg-blush { background: var(--blush); }
+  .bg-sky { background: var(--sky); }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .eyebrow.c-violet { color: var(--violet-deep); }
+  .eyebrow.c-coral { color: var(--coral-deep); }
+  .eyebrow.c-blue { color: var(--blue-deep); }
+
+  .sec-title { font-size: clamp(28px, 3.6vw, 42px); margin-bottom: 18px; line-height: 1.08; }
+  .sec-intro { font-size: 16px; color: var(--ink-soft); max-width: 640px; line-height: 1.75; margin-bottom: 48px; }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-size: 14.5px; font-weight: 700;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  .btn svg { width: 16px; height: 16px; }
+  .btn-primary { background: var(--violet); color: #fff; box-shadow: 0 10px 22px -6px rgba(124,92,250,0.55); }
+  .btn-primary:hover { background: var(--violet-deep); transform: translateY(-2px); }
+  .btn-outline { background: var(--paper); color: var(--ink); border: 1.6px solid var(--line); }
+  .btn-outline:hover { border-color: var(--violet); color: var(--violet-deep); transform: translateY(-2px); }
+  .btn-coral { background: var(--coral); color: #fff; box-shadow: 0 10px 22px -6px rgba(255,111,143,0.5); }
+  .btn-coral:hover { background: var(--coral-deep); transform: translateY(-2px); }
+
+  /* ============ HERO ============ */
+  #home {
+    padding-top: 76px;
+    background: linear-gradient(125deg, var(--lavender) 0%, var(--blush) 52%, var(--sky) 100%);
+    overflow: hidden;
+  }
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.55;
+    z-index: 1;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 4.6vw, 52px);
+    line-height: 1.14;
+    margin-bottom: 22px;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 540px;
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.9);
+    color: var(--ink);
+    padding: 8px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-art { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
+  .doodle { position: absolute; opacity: 0.85; }
+
+  /* ============ ABOUT ============ */
+  .about-grid { display: grid; grid-template-columns: 1fr 0.7fr; gap: 56px; align-items: start; }
+  .about-grid p { margin-bottom: 18px; font-size: 16px; color: var(--ink); line-height: 1.8; }
+  .pull-quote {
+    border-left: 3px solid var(--coral);
+    padding: 4px 0 4px 22px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 26px;
+    line-height: 1.5;
+  }
+  .about-art {
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    border: 1px solid var(--line);
+  }
+  .about-art-icon { width: 48px; height: 48px; color: var(--coral-deep); margin-bottom: 18px; }
+  .about-fact { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .about-fact:first-of-type { border-top: none; }
+  .about-fact-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--violet-deep); font-size: 13px; flex-shrink: 0; width: 26px; }
+  .about-fact-text { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ============ BUILDING (QUADRANTS) ============ */
+  .quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .quad-card {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 28px;
+    border-top: 4px solid var(--violet);
+  }
+  .quad-card.q-coral { border-top-color: var(--coral); }
+  .quad-card.q-blue { border-top-color: var(--blue); }
+  .quad-card.q-sage { border-top-color: var(--sage); }
+  .quad-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .quad-icon { width: 30px; height: 30px; color: var(--violet); flex-shrink: 0; }
+  .q-coral .quad-icon { color: var(--coral-deep); }
+  .q-blue .quad-icon { color: var(--blue-deep); }
+  .q-sage .quad-icon { color: var(--sage); }
+  .quad-head h3 { font-size: 16.5px; font-weight: 700; }
+  .tag-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag-pill {
+    font-size: 12.5px; font-weight: 600;
+    background: var(--lavender);
+    color: var(--ink-soft);
+    padding: 7px 12px;
+    border-radius: 999px;
+  }
+  .q-coral .tag-pill { background: var(--blush); }
+  .q-blue .tag-pill { background: var(--sky); }
+  .q-sage .tag-pill { background: #EAF6EF; }
+
+  /* ============ PIN CARDS ============ */
+  .pin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 22px; margin-bottom: 56px; }
+  .pin-card {
+    position: relative;
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 26px 22px 22px;
+    box-shadow: 0 12px 26px -10px var(--shadow), 0 2px 8px rgba(33,26,51,0.05);
+    transform: rotate(var(--tilt, 0deg));
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .pin-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 18px 34px -10px var(--shadow); }
+  .pin-card::before {
+    content: '';
+    position: absolute; top: -9px; left: 50%;
+    width: 50px; height: 18px;
+    background: var(--tape, var(--coral));
+    opacity: 0.55;
+    transform: translateX(-50%) rotate(-3deg);
+    border-radius: 3px;
+  }
+  .pin-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--violet-deep);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .pin-label { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 8px; }
+  .pin-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  .chart-card {
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    padding: 32px;
+    border: 1px solid var(--line);
+  }
+  .chart-card h3 { font-size: 16px; margin-bottom: 6px; }
+  .chart-card .chart-note { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 22px; font-family: 'JetBrains Mono', monospace; }
+  .chart-wrap-main { position: relative; height: 320px; }
+
+  /* ============ TIMELINE (EXPERIENCE) ============ */
+  .timeline-v { display: flex; flex-direction: column; }
+  .tl-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-row::before {
+    content: '';
+    position: absolute;
+    left: 191px; top: 6px; bottom: -4px;
+    width: 2px;
+    background: var(--line);
+  }
+  .tl-row:last-child::before { display: none; }
+  .tl-row:last-child { padding-bottom: 0; }
+  .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-align: right;
+    padding-top: 2px;
+  }
+  .tl-dot {
+    position: absolute; left: 186px; top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--violet);
+    border: 3px solid var(--blush);
+  }
+  .tl-card {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+  }
+  .tl-card h3 { font-size: 17px; margin-bottom: 4px; }
+  .tl-card .tl-tag { font-size: 12.5px; color: var(--violet-deep); font-weight: 600; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; }
+  .tl-card ul { display: flex; flex-direction: column; gap: 8px; }
+  .tl-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.6; padding-left: 18px; position: relative; }
+  .tl-card li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+
+  /* ============ EDUCATION HORIZONTAL ============ */
+  .edu-track { position: relative; padding-top: 10px; }
+  .edu-line { position: absolute; top: 51px; left: 0; right: 0; height: 2px; background: var(--line); }
+  .edu-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; position: relative; }
+  .edu-node { display: flex; flex-direction: column; }
+  .edu-year { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 15px; color: var(--blue-deep); margin-bottom: 14px; }
+  .edu-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--blue); border: 3px solid var(--sky); margin-bottom: 14px; }
+  .edu-card { background: var(--paper); border-radius: var(--r-md); padding: 20px 22px; border: 1px solid var(--line); }
+  .edu-card .edu-stage { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--coral-deep); margin-bottom: 8px; }
+  .edu-card h3 { font-size: 15.5px; margin-bottom: 6px; line-height: 1.3; }
+  .edu-card p { font-size: 13px; color: var(--ink-soft); }
+
+  /* ============ PROJECTS ============ */
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
+  .proj-card {
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    padding: 30px;
+    border: 1px solid var(--line);
+    transform: rotate(var(--tilt, 0deg));
+    box-shadow: 0 14px 30px -12px var(--shadow);
+  }
+  .proj-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; margin-bottom: 6px; }
+  .proj-card h3 { font-size: 19px; }
+  .proj-role-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    background: var(--lavender);
+    color: var(--violet-deep);
+    padding: 5px 11px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .proj-time { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
+  .proj-card ul { display: flex; flex-direction: column; gap: 9px; }
+  .proj-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.6; padding-left: 18px; position: relative; }
+  .proj-card li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
+
+  .other-events { background: var(--paper); border-radius: var(--r-md); padding: 26px 28px; border: 1px dashed var(--line); }
+  .other-events h4 { font-size: 14px; margin-bottom: 14px; color: var(--ink-soft); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
+  .event-chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .event-chip { font-size: 13px; background: var(--lavender); color: var(--ink); padding: 8px 14px; border-radius: 10px; font-weight: 500; }
+
+  /* ============ CASE STUDIES ============ */
+  .cs-card {
+    background: var(--paper);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 16px 36px -16px var(--shadow);
+  }
+  .cs-card:last-child { margin-bottom: 0; }
+  .cs-head { padding: 26px 30px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+  .cs-head-left { flex: 1; min-width: 240px; }
+  .cs-num { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; color: var(--coral-deep); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .cs-head h3 { font-size: 19px; margin-bottom: 8px; }
+  .cs-head p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; max-width: 540px; }
+  .cs-open-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    border: 1.5px solid var(--line);
+    padding: 9px 15px;
+    border-radius: 999px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    transition: all 0.18s ease;
+  }
+  .cs-open-btn:hover { border-color: var(--violet); color: var(--violet-deep); }
+  .cs-open-btn svg { width: 13px; height: 13px; }
+  .cs-frame-wrap { background: #f3f3f3; max-height: 760px; overflow-y: auto; }
+  .cs-frame-wrap iframe { width: 100%; border: 0; display: block; min-height: 1300px; }
+
+  /* ============ WRITING ============ */
+  .write-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .write-card {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 24px;
+    border: 1px solid var(--line);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .write-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px -14px var(--shadow); }
+  .write-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .write-icon { width: 26px; height: 26px; color: var(--blue-deep); }
+  .write-arrow { width: 16px; height: 16px; color: var(--ink-faint); }
+  .write-card h3 { font-size: 15.5px; line-height: 1.3; }
+  .write-card p { font-size: 12.8px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ============ COURSES ============ */
+  .course-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .course-card {
+    background: var(--paper);
+    border-radius: var(--r-md);
+    padding: 24px 20px;
+    border: 1px solid var(--line);
+    text-align: center;
+  }
+  .course-mark { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 19px; margin-bottom: 12px; }
+  .course-card .c-1 { color: #0E2A47; font-family: 'Inter', serif; font-style: italic; font-weight: 700; }
+  .course-card .c-2 { color: #1B2E4B; }
+  .course-card .c-3 { color: #5b48c4; }
+  .course-card .c-4 { color: #FF5C35; }
+  .course-topic { font-size: 12.5px; font-weight: 700; color: var(--ink); background: var(--lavender); padding: 6px 10px; border-radius: 8px; display: inline-block; }
+
+  /* ============ CONTACT ============ */
+  #contact { background: linear-gradient(115deg, var(--lavender) 0%, var(--sky) 100%); text-align: center; }
+  #contact .wrap { display: flex; flex-direction: column; align-items: center; }
+  #contact h2 { font-size: clamp(30px, 4vw, 46px); margin-bottom: 16px; }
+  #contact p.lead { font-size: 17px; color: var(--ink-soft); max-width: 480px; margin-bottom: 36px; }
+  .contact-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+  .contact-meta { font-size: 13px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; }
+
+  footer.site-foot {
+    background: var(--lavender-deep);
+    padding: 20px 64px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1080px) {
+    .pin-grid { grid-template-columns: repeat(2, 1fr); }
+    .write-grid { grid-template-columns: repeat(2, 1fr); }
+    .course-row { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 980px) {
+    .sidebar { display: none; }
+    main { margin-left: 0; }
+    .mobile-bar {
+      display: flex;
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 64px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+      gap: 14px;
+      padding: 0 18px;
+      z-index: 100;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .mobile-bar::-webkit-scrollbar { display: none; }
+    .mobile-bar .m-brand { font-weight: 800; font-size: 14px; flex-shrink: 0; padding-right: 10px; border-right: 1px solid var(--line); margin-right: 4px; }
+    .mobile-bar a {
+      font-size: 13px; font-weight: 600; color: var(--ink-soft);
+      padding: 8px 13px; border-radius: 999px; flex-shrink: 0;
+    }
+    .mobile-bar a.active { background: var(--lavender); color: var(--violet-deep); }
+    main { padding-top: 64px; }
+    section { scroll-margin-top: 64px; padding: 70px 28px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-art { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .quad-grid { grid-template-columns: 1fr; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .write-grid { grid-template-columns: 1fr; }
+    .course-row { grid-template-columns: 1fr 1fr; }
+    .pin-grid { grid-template-columns: 1fr 1fr; }
+    .edu-row { grid-template-columns: 1fr; gap: 36px; }
+    .edu-line { display: none; }
+    .tl-row { grid-template-columns: 1fr; gap: 10px; }
+    .tl-row::before, .tl-dot { display: none; }
+    .tl-date { text-align: left; }
+    .cs-frame-wrap { max-height: 560px; }
+  }
+
+  @media (max-width: 560px) {
+    section { padding: 56px 18px; }
+    .pin-grid { grid-template-columns: 1fr; }
+    .course-row { grid-template-columns: 1fr; }
+    .cta-row { flex-direction: column; align-items: stretch; }
+    .cs-frame-wrap { max-height: 460px; }
+  }
+
+  .cs-inline-frame { max-height: 800px; overflow-y: auto; background: #fff; }
+  .cs-inline-wrap { width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="monogram">ZF</div>
+      <div class="brand-text">
+        <div class="brand-name">Zoya Faraz</div>
+        <div class="brand-role">Incoming, Rotman Commerce</div>
+      </div>
+    </div>
+
+    <div class="grad-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg>
+      Class of 2030
+    </div>
+
+    <div class="status-row">
+      <span class="status-dot"></span>
+      Open to opportunities, summer 2026
+    </div>
+
+    <nav class="side-nav">
+      <a href="#home" data-target="home"><span class="idx">01</span>Home</a>
+      <a href="#about" data-target="about"><span class="idx">02</span>About</a>
+      <a href="#building" data-target="building"><span class="idx">03</span>Building</a>
+      <a href="#numbers" data-target="numbers"><span class="idx">04</span>By the Numbers</a>
+      <a href="#experience" data-target="experience"><span class="idx">05</span>Experience</a>
+      <a href="#education" data-target="education"><span class="idx">06</span>Education</a>
+      <a href="#projects" data-target="projects"><span class="idx">07</span>Projects</a>
+      <a href="#case-studies" data-target="case-studies"><span class="idx">08</span>Case Studies</a>
+      <a href="#writing" data-target="writing"><span class="idx">09</span>Writing</a>
+      <a href="#courses" data-target="courses"><span class="idx">10</span>Courses</a>
+      <a href="#contact" data-target="contact"><span class="idx">11</span>Contact</a>
+    </nav>
+
+    <div class="side-foot">
+      <div class="side-foot-label">Get in touch</div>
+      <div class="icon-row">
+        <a class="icon-btn" href="mailto:zoyaf4000@gmail.com" target="_blank" rel="noopener" aria-label="Email Zoya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m4 6 8 7 8-7"></path></svg>
+        </a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/zoya-faraz-58a734319/" target="_blank" rel="noopener noreferrer" aria-label="Zoya's LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v5M8 8v.01M12 16v-3.2c0-1 .8-1.8 1.8-1.8 1 0 1.7.8 1.7 1.8V16"></path></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MOBILE NAV ============ -->
+  <nav class="mobile-bar" id="mobileBar">
+    <span class="m-brand">ZF</span>
+    <a href="#home" data-target="home">Home</a>
+    <a href="#about" data-target="about">About</a>
+    <a href="#building" data-target="building">Building</a>
+    <a href="#numbers" data-target="numbers">Numbers</a>
+    <a href="#experience" data-target="experience">Experience</a>
+    <a href="#education" data-target="education">Education</a>
+    <a href="#projects" data-target="projects">Projects</a>
+    <a href="#case-studies" data-target="case-studies">Case Studies</a>
+    <a href="#writing" data-target="writing">Writing</a>
+    <a href="#courses" data-target="courses">Courses</a>
+    <a href="#contact" data-target="contact">Contact</a>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section id="home">
+      <div class="hero-blob" style="width:340px; height:340px; background:var(--violet); top:-100px; right:-80px;"></div>
+      <div class="hero-blob" style="width:260px; height:260px; background:var(--blue); bottom:-60px; left:0px;"></div>
+
+      <div class="wrap hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow c-violet">Portfolio &middot; University of Toronto</div>
+            <h1>I've led 150-person teams, signed 25+ contracts. From vision to <span class="script">execution</span>.</h1>
+            <p class="hero-sub">I'm Zoya Faraz, an incoming Rotman Commerce student, Class of 2030. </p>
+            <div class="chip-row">
+              <span class="chip">150+ team members led</span>
+              <span class="chip">50+ businesses pitched</span>
+              <span class="chip">30,000+ views generated</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="mailto:zoyaf4000@gmail.com" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m4 6 8 7 8-7"></path></svg>
+                Email me
+              </a>
+              <a class="btn btn-outline" href="https://www.linkedin.com/in/zoya-faraz-58a734319/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v5M8 8v.01M12 16v-3.2c0-1 .8-1.8 1.8-1.8 1 0 1.7.8 1.7 1.8V16"></path></svg>
+                Connect on LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-art">
+            <svg viewBox="0 0 320 280" width="100%">
+              <line x1="20" y1="230" x2="300" y2="230" stroke="#D9CFEF" stroke-width="2"></line>
+              <rect x="35" y="170" width="36" height="60" rx="6" fill="#7C5CFA"></rect>
+              <rect x="90" y="130" width="36" height="100" rx="6" fill="#FF6F8F"></rect>
+              <rect x="145" y="90" width="36" height="140" rx="6" fill="#4FA3E3"></rect>
+              <rect x="200" y="50" width="36" height="180" rx="6" fill="#7C5CFA"></rect>
+              <rect x="255" y="20" width="36" height="210" rx="6" fill="#FF6F8F"></rect>
+              <path d="M53 165 108 125 163 85 218 45 273 18" stroke="#211A33" stroke-width="2.5" stroke-dasharray="6 7" fill="none" stroke-linecap="round"></path>
+              <circle cx="53" cy="165" r="5" fill="#211A33"></circle>
+              <circle cx="108" cy="125" r="5" fill="#211A33"></circle>
+              <circle cx="163" cy="85" r="5" fill="#211A33"></circle>
+              <circle cx="218" cy="45" r="5" fill="#211A33"></circle>
+              <circle cx="273" cy="18" r="5" fill="#211A33"></circle>
+              <circle cx="296" cy="70" r="9" fill="none" stroke="#FF6F8F" stroke-width="2.5"></circle>
+              <path d="M14 60 22 60 M18 56 18 64" stroke="#4FA3E3" stroke-width="2.5" stroke-linecap="round"></path>
+              <path d="M270 250 l6 6 m0 -6 l-6 6" stroke="#7C5CFA" stroke-width="2.5" stroke-linecap="round"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="bg-blush">
+      <div class="wrap">
+        <div class="eyebrow c-coral">About</div>
+        <h2 class="sec-title">Curious by default, organized by habit.</h2>
+        <div class="about-grid">
+          <div>
+            <p>I like learning fast, testing ideas in the real world, and turning rough plans into things that actually run on the day. Right now that means picking up Python, Excel, and AI tools and pointing them at real problems instead of just coursework.</p>
+            <p>Behavioral psychology, economics, and strategy pull me in more than anything else. That curiosity earned me top cohort awards at Karachi Grammar School and certifications from Yale and the University of London. Outside of school, I read constantly, jumping between neuroscience, philosophy, and fiction depending on the week.</p>
+            <div class="pull-quote">Curiosity gets the idea started. Execution is the part most people skip.</div>
+          </div>
+          <div class="about-art">
+            <svg class="about-art-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5c2-1.5 5-1.5 7 0v14c-2-1.5-5-1.5-7 0V5Z"></path><path d="M22 5c-2-1.5-5-1.5-7 0v14c2-1.5 5-1.5 7 0V5Z"></path></svg>
+            <div class="about-fact">
+              <div class="about-fact-num">01</div>
+              <div class="about-fact-text">Incoming BCom, Economics &amp; Finance, Rotman Commerce, University of Toronto</div>
+            </div>
+            <div class="about-fact">
+              <div class="about-fact-num">02</div>
+              <div class="about-fact-text">Top cohort awards at Karachi Grammar School across O-Levels and A-Levels</div>
+            </div>
+            <div class="about-fact">
+              <div class="about-fact-num">03</div>
+              <div class="about-fact-text">Certified in Narrative Economics (Yale) and Corporate Strategy (UCL)</div>
+            </div>
+            <div class="about-fact">
+              <div class="about-fact-num">04</div>
+              <div class="about-fact-text">Reads across neuroscience, philosophy, and fiction most weeks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUILDING ============ -->
+    <section id="building" class="bg-sky">
+      <div class="wrap">
+        <div class="eyebrow c-blue">What I'm Building</div>
+        <h2 class="sec-title">Four areas I'm actively working on right now.</h2>
+        <p class="sec-intro">Alongside school, this is where I'm spending my practice time. None of it is finished. All of it is in progress.</p>
+        <div class="quad-grid">
+          <div class="quad-card">
+            <div class="quad-head">
+              <svg class="quad-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"></path></svg>
+              <h3>Technical</h3>
+            </div>
+            <div class="tag-pills">
+              <span class="tag-pill">Python</span>
+              <span class="tag-pill">AI Automation</span>
+              <span class="tag-pill">Prompt Engineering</span>
+              <span class="tag-pill">Excel</span>
+            </div>
+          </div>
+          <div class="quad-card q-coral">
+            <div class="quad-head">
+              <svg class="quad-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-1.1 4.2c-2 3.6-7.2 6-7.9 6s-5.9-2.4-7.9-6A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"></path></svg>
+              <h3>Communication</h3>
+            </div>
+            <div class="tag-pills">
+              <span class="tag-pill">Public Speaking</span>
+              <span class="tag-pill">Articulation</span>
+              <span class="tag-pill">Vocabulary</span>
+              <span class="tag-pill">Executive Writing</span>
+            </div>
+          </div>
+          <div class="quad-card q-blue">
+            <div class="quad-head">
+              <svg class="quad-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <h3>Research &amp; Thinking</h3>
+            </div>
+            <div class="tag-pills">
+              <span class="tag-pill">Neuroscience Research</span>
+              <span class="tag-pill">Behavioral Economics</span>
+              <span class="tag-pill">Analytical Thinking</span>
+              <span class="tag-pill">Long-form Writing</span>
+            </div>
+          </div>
+          <div class="quad-card q-sage">
+            <div class="quad-head">
+              <svg class="quad-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"></circle><circle cx="18" cy="6" r="2.4"></circle><circle cx="12" cy="18" r="2.4"></circle><path d="M7.8 7.4 10.4 16M16.2 7.4 13.6 16M8.4 6h7.2"></path></svg>
+              <h3>Professional Presence</h3>
+            </div>
+            <div class="tag-pills">
+              <span class="tag-pill">Networking</span>
+              <span class="tag-pill">Personal Brand</span>
+              <span class="tag-pill">Substack</span>
+              <span class="tag-pill">Professional Relationships</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXECUTION BY THE NUMBERS ============ -->
+    <section id="numbers" class="bg-lavender">
+      <div class="wrap">
+        <div class="eyebrow c-violet">Execution by the Numbers</div>
+        <h2 class="sec-title">Every number below is from something I actually ran.</h2>
+        <p class="sec-intro">Not projections, not estimates. These came out of school societies, competitions, and one summer spent cold-emailing restaurant owners.</p>
+
+        <div class="pin-grid">
+          <div class="pin-card" style="--tilt:-1.6deg; --tape: var(--violet);">
+            <div class="pin-num">10,000+</div>
+            <div class="pin-label">Students</div>
+            <div class="pin-desc">Served through a school-wide ID verification and discount system I built and ran.</div>
+          </div>
+          <div class="pin-card" style="--tilt:1.2deg; --tape: var(--coral);">
+            <div class="pin-num">2,500+</div>
+            <div class="pin-label">Participants</div>
+            <div class="pin-desc">Managed across multiple national and local competitions.</div>
+          </div>
+          <div class="pin-card" style="--tilt:-0.8deg; --tape: var(--blue);">
+            <div class="pin-num">150+</div>
+            <div class="pin-label">Team Members</div>
+            <div class="pin-desc">Led across campus societies, executive committees, and sports teams.</div>
+          </div>
+          <div class="pin-card" style="--tilt:1.8deg; --tape: var(--violet);">
+            <div class="pin-num">30,000+</div>
+            <div class="pin-label">Views</div>
+            <div class="pin-desc">Generated through the Finance League Instagram promotional strategy.</div>
+          </div>
+          <div class="pin-card" style="--tilt:-1.2deg; --tape: var(--coral);">
+            <div class="pin-num">50+</div>
+            <div class="pin-label">Businesses</div>
+            <div class="pin-desc">Pitched directly, resulting in 25+ signed partnership contracts.</div>
+          </div>
+          <div class="pin-card" style="--tilt:1deg; --tape: var(--blue);">
+            <div class="pin-num">1</div>
+            <div class="pin-label">Corporate Study Tour</div>
+            <div class="pin-desc">Secured and organized at the Pakistan Stock Exchange.</div>
+          </div>
+          <div class="pin-card" style="--tilt:-1.4deg; --tape: var(--violet);">
+            <div class="pin-num">7-Week</div>
+            <div class="pin-label">Curriculum</div>
+            <div class="pin-desc">Designed and taught to underprivileged youth.</div>
+          </div>
+          <div class="pin-card" style="--tilt:0.7deg; --tape: var(--coral);">
+            <div class="pin-num">25+</div>
+            <div class="pin-label">Contracts Signed</div>
+            <div class="pin-desc">Drafted and closed with restaurants, cafes, and Liberty Books.</div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>Scale of execution across projects</h3>
+          <div class="chart-note">Logarithmic scale, since these numbers span two orders of magnitude</div>
+          <div class="chart-wrap-main"><canvas id="execChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK EXPERIENCE ============ -->
+    <section id="experience" class="bg-blush">
+      <div class="wrap">
+        <div class="eyebrow c-coral">Work Experience</div>
+        <h2 class="sec-title">Three internships, three different problems to solve.</h2>
+        <div class="timeline-v">
+          <div class="tl-row">
+            <div class="tl-date">Dec 2025 – Jan 2026</div>
+            <div>
+              <div class="tl-dot"></div>
+              <div class="tl-card">
+                <h3>ChannelTek Enterprises (Pvt) Ltd</h3>
+                <div class="tl-tag">Operations Department</div>
+                <ul>
+                  <li>Ran inter-departmental communication through the ChannelTek ERP system.</li>
+                  <li>Built daily team deployment rosters and tracked biometric attendance for HR.</li>
+                  <li>Prepared daily project expense reports and supported budget preparation.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date">Jun 2025</div>
+            <div>
+              <div class="tl-dot"></div>
+              <div class="tl-card">
+                <h3>Clipsal Pakistan (Pvt.) Ltd</h3>
+                <div class="tl-tag">Marketing Department</div>
+                <ul>
+                  <li>Supported a digital transformation push and listed products onto online marketplaces.</li>
+                  <li>Coordinated product listings and descriptions across platforms.</li>
+                  <li>Picked up e-commerce and online ad basics on the job.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-date">Jul – Aug 2024</div>
+            <div>
+              <div class="tl-dot"></div>
+              <div class="tl-card">
+                <h3>Lifeonic Brands Private Limited</h3>
+                <div class="tl-tag">Marketing Department</div>
+                <ul>
+                  <li>Tracked social media insights and designed ads using AI prompts.</li>
+                  <li>Built a store stock tracking system and organized inventory data for restocking.</li>
+                  <li>Handled vendor calls to confirm order status.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education" class="bg-sky">
+      <div class="wrap">
+        <div class="eyebrow c-blue">Education</div>
+        <h2 class="sec-title">Where I've studied, and where I'm headed.</h2>
+        <div class="edu-track">
+          <div class="edu-line"></div>
+          <div class="edu-row">
+            <div class="edu-node">
+              <div class="edu-year">2022</div>
+              <div class="edu-dot"></div>
+              <div class="edu-card">
+                <div class="edu-stage">O-Levels</div>
+                <h3>Karachi Grammar School</h3>
+                <p>7 A* and 2 A</p>
+              </div>
+            </div>
+            <div class="edu-node">
+              <div class="edu-year">2024</div>
+              <div class="edu-dot"></div>
+              <div class="edu-card">
+                <div class="edu-stage">A-Levels</div>
+                <h3>Karachi Grammar School</h3>
+                <p>5 A and 5 A* predicted</p>
+              </div>
+            </div>
+            <div class="edu-node">
+              <div class="edu-year">2026</div>
+              <div class="edu-dot"></div>
+              <div class="edu-card">
+                <div class="edu-stage">Bachelor of Commerce</div>
+                <h3>University of Toronto, Rotman Commerce</h3>
+                <p>Incoming, Class of 2030</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECT PORTFOLIO ============ -->
+    <section id="projects" class="bg-lavender">
+      <div class="wrap">
+        <div class="eyebrow c-violet">Project Portfolio</div>
+        <h2 class="sec-title">Hands-on projects I built from the ground up.</h2>
+        <p class="sec-intro">These are different from the case studies below. Everything here is a project I ran in the real world, with real vendors, real budgets, and real deadlines.</p>
+
+        <div class="proj-grid">
+          <div class="proj-card" style="--tilt:-0.6deg;">
+            <div class="proj-head">
+              <h3>Student Discount Initiative</h3>
+              <span class="proj-role-badge">Project Lead</span>
+            </div>
+            <div class="proj-time">Summer before AS Level</div>
+            <ul>
+              <li>Started and ran a school-wide student discount program from scratch.</li>
+              <li>Cold-reached over 50 restaurants and cafes by email and WhatsApp, often across time zones.</li>
+              <li>Drafted and signed 25+ partnership contracts, including with Liberty Books.</li>
+              <li>Pitched the logistics to the Principal, Headmistress, and CFO, then launched printed student ID cards for partner verification.</li>
+            </ul>
+          </div>
+          <div class="proj-card" style="--tilt:0.7deg;">
+            <div class="proj-head">
+              <h3>KGES Entrepreneurship Summit</h3>
+              <span class="proj-role-badge">Head of Logistics</span>
+            </div>
+            <div class="proj-time">January 2024 &amp; November 2024</div>
+            <ul>
+              <li>Managed a 12-member operations team for South Asia's second-largest student summit.</li>
+              <li>Coordinated logistics and vendor outreach for 1,000+ participants.</li>
+              <li>Led the design and automated distribution of 1,000+ IDs and e-certificates.</li>
+              <li>Resolved live event problems on the spot, including microphone failures and last-minute printing requests.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="other-events">
+          <h4>Other events I've organized</h4>
+          <div class="event-chip-row">
+            <span class="event-chip">Mental Health Awareness Week</span>
+            <span class="event-chip">National Science Olympiad</span>
+            <span class="event-chip">JAR Competition</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDIES ============ -->
+    <section id="case-studies" class="bg-blush">
+      <div class="wrap">
+        <div class="eyebrow c-coral">Case Studies</div>
+        <h2 class="sec-title">Two analytical projects I built to practice real business thinking.</h2>
+        <p class="sec-intro">Both are fully interactive below, charts included. I built each one independently, outside of any class, to practice reading financial filings and breaking down a brand's strategy the way an analyst would.</p>
+
+        <div class="cs-card">
+          <div class="cs-head">
+            <div class="cs-head-left">
+              <div class="cs-num">Case Study 01</div>
+              <h3>Gross Margin Divergence: Aritzia vs. Lululemon</h3>
+              <p>A look at why Aritzia's margins expanded 6.4 points over three fiscal years while Lululemon's contracted, built from SEC filings and Aritzia's own investor disclosures.</p>
+            </div>
+            <button class="cs-open-btn" data-open="cs1">
+              Open full screen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </button>
+          </div>
+          <div class="cs-frame-wrap cs-inline-frame"><div class="cs-inline-wrap">
+<style scoped>
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #0D1B2A;
+    --navy2:   #142236;
+    --navy3:   #1C2F45;
+    --border:  #253A52;
+    --amber:   #E8A838;
+    --slate:   #7BAFD4;
+    --white:   #F0F4F8;
+    --muted:   #7A90A4;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .source-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 48px 56px;
+    border-bottom: 1px solid var(--border);
+    max-width: 960px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--amber);
+  }
+  .hero .subtitle {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.65;
+  }
+
+  /* ── KEY STATS ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    padding: 36px 48px;
+    border-right: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-number {
+    font-family: var(--mono);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-number.amber { color: var(--amber); }
+  .stat-number.slate { color: var(--slate); }
+  .stat-number.white { color: var(--white); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .stat-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* ── CHART SECTION ── */
+  .chart-section {
+    padding: 48px 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .legend {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-dot.amber { background: var(--amber); }
+  .legend-dot.slate { background: var(--slate); }
+
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+  }
+  canvas#chart { width: 100% !important; height: 100% !important; }
+
+  .chart-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  /* ── DATA TABLE ── */
+  .table-section {
+    padding: 48px 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    padding: 10px 16px 14px;
+    text-align: right;
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  th:first-child { text-align: left; }
+  td {
+    padding: 14px 16px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+    color: var(--white);
+  }
+  td:first-child {
+    text-align: left;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  tr.company-header td {
+    background: var(--navy2);
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--border);
+  }
+  tr.company-header td:first-child { color: var(--white); font-weight: 600; }
+  .atz { color: var(--amber); }
+  .lulu { color: var(--slate); }
+  .delta { color: var(--muted); font-size: 12px; }
+  .up { color: #5DB87A; }
+  .down { color: #E05C5C; }
+
+  /* ── ANALYSIS ── */
+  .analysis-section {
+    padding: 48px 48px 56px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+  .analysis-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+  }
+  .finding {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    padding: 24px;
+    border-radius: 2px;
+  }
+  .finding.lulu-finding {
+    border-left-color: var(--slate);
+  }
+  .finding-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .finding-label span.amber { color: var(--amber); }
+  .finding-label span.slate { color: var(--slate); }
+  .finding p {
+    font-size: 14px;
+    color: var(--white);
+    line-height: 1.7;
+  }
+  .hypothesis {
+    grid-column: 1 / -1;
+    background: var(--navy3);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .hypothesis .h-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .hypothesis p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--white);
+  }
+  .hypothesis strong { color: var(--amber); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .footer-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    border: 1px solid var(--amber);
+    padding: 5px 12px;
+    border-radius: 3px;
+    opacity: 0.8;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    header, .hero, .stat, .chart-section,
+    .table-section, .analysis-section, footer { padding-left: 24px; padding-right: 24px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .analysis-section { grid-template-columns: 1fr; gap: 24px; }
+    .analysis-section h2, .hypothesis { grid-column: 1; }
+  }
+
+</style>
+<header>
+  <div class="eyebrow">Case Study · Canadian Retail Apparel · Gross Margin Analysis</div>
+  <div class="source-tag">Sources: SEC EDGAR · Aritzia IR</div>
+</header>
+
+<div class="hero">
+  <h1>Two Canadian apparel giants.<br>One margin gap <em>closing fast.</em></h1>
+  <p class="subtitle">Aritzia's gross margin expanded 6.4 percentage points over three fiscal years while Lululemon's contracted 2.6 points. This analysis maps where each company's cost structure is moving, and why the gap tells a more interesting story than the numbers alone.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat">
+    <div class="stat-number amber">+6.4 pp</div>
+    <div class="stat-label">Aritzia margin expansion</div>
+    <div class="stat-sub">FY2024 → FY2026 (CAD)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number slate">−2.6 pp</div>
+    <div class="stat-label">Lululemon margin contraction</div>
+    <div class="stat-sub">FY2023 → FY2025 (USD)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number white">~12 pp</div>
+    <div class="stat-label">Gap remaining (absolute)</div>
+    <div class="stat-sub">Down from ~20 pp three years ago</div>
+  </div>
+</div>
+
+<div class="chart-section">
+  <div class="section-label">Gross Margin % — Three-Year Trend</div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot amber"></div>Aritzia (CAD)</div>
+    <div class="legend-item"><div class="legend-dot slate"></div>Lululemon (USD)</div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="cs1-chart"></canvas>
+  </div>
+  <div class="chart-note">* Aritzia fiscal year ends ~Feb/Mar; Lululemon fiscal year ends ~Jan/Feb. Years labeled by fiscal year name.</div>
+</div>
+
+<div class="table-section">
+  <div class="section-label">Raw Data</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Year 1</th>
+        <th>Year 2</th>
+        <th>Year 3</th>
+        <th>Δ (3yr)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="company-header">
+        <td colspan="5"><span class="atz">▲ ARITZIA</span> &nbsp;· Reported in CAD millions · Fiscal year ends Feb/Mar</td>
+      </tr>
+      <tr>
+        <td>Fiscal Year</td>
+        <td>FY2024</td>
+        <td>FY2025</td>
+        <td>FY2026</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Gross Profit ($M CAD)</td>
+        <td>899</td>
+        <td>1,180</td>
+        <td>1,660</td>
+        <td class="up">+$761M</td>
+      </tr>
+      <tr>
+        <td>Gross Margin %</td>
+        <td class="atz">38.5%</td>
+        <td class="atz">43.1%</td>
+        <td class="atz">44.9%</td>
+        <td class="up">+6.4 pp</td>
+      </tr>
+      <tr class="company-header">
+        <td colspan="5"><span class="lulu">▲ LULULEMON</span> &nbsp;· Reported in USD millions · Fiscal year ends Jan/Feb</td>
+      </tr>
+      <tr>
+        <td>Fiscal Year</td>
+        <td>FY2023</td>
+        <td>FY2024</td>
+        <td>FY2025</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Gross Profit ($M USD)</td>
+        <td>5,602</td>
+        <td>6,265</td>
+        <td>6,300</td>
+        <td class="up">+$698M</td>
+      </tr>
+      <tr>
+        <td>Gross Margin %</td>
+        <td class="lulu">58.3%</td>
+        <td class="lulu">59.2%</td>
+        <td class="lulu">56.6%</td>
+        <td class="down">−2.6 pp</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="analysis-section">
+  <h2>What the data actually says</h2>
+
+  <div class="finding">
+    <div class="finding-label"><span class="amber">Aritzia</span> — Why margins are expanding</div>
+    <p>Aritzia's 6.4-point margin expansion over three years is unusually fast for a retailer its size. Their own disclosures attribute it to four specific levers: lower markdowns (meaning less unsold inventory being discounted), IMU (initial markup) improvements as they move to better-margin SKUs, lower warehousing costs, and a "smart spending initiative" cutting operational overhead. Notably, this is happening while they're aggressively opening new boutiques (usually a margin headwind), which makes the improvement more significant, not less.</p>
+  </div>
+
+  <div class="finding lulu-finding">
+    <div class="finding-label"><span class="slate">Lululemon</span> — Why margins are contracting</div>
+    <p>Lululemon's absolute margin still towers above Aritzia's at 56.6%, but the direction matters: a 2.6-point drop in a single three-year window, combined with flat Americas comparable sales in FY2024, suggests they're facing either pricing pressure in their core US market or higher promotional spend to hold volume. Their gross profit dollars grew $698M over the same period, so this is a mix-shift and cost problem, not a revenue problem, which is arguably more fixable, but also harder to see coming.</p>
+  </div>
+
+  <div class="hypothesis">
+    <div class="h-label">Hypothesis</div>
+    <p>The margin gap between Aritzia and Lululemon (historically around 20 percentage points) has narrowed to roughly <strong>12 points</strong> and appears structural rather than cyclical. Aritzia is not simply having a good year; they've systematically improved unit economics while scaling. Lululemon's contraction, meanwhile, likely reflects the cost of defending US market share as the athleisure category matures and competition intensifies. If Aritzia sustains its current trajectory another two to three fiscal years, the gross margin gap could compress to single digits, a remarkable outcome for a company that, four years ago, operated at margins closer to a typical mid-market retailer than a premium brand.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">Built by Zoya Faraz · Incoming BCom, Rotman Commerce, U of T '30 · June 2026</div>
+  <div class="footer-tag">Portfolio Project 1</div>
+</footer>
+
+<!-- Chart script using Chart.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+
+// Data
+const aritziaData  = [38.5, 43.1, 44.9];
+const lululemonData = [58.3, 59.2, 56.6];
+const labels = ['Year 1', 'Year 2', 'Year 3'];
+
+// Animation: draw lines in
+Chart.defaults.animation.duration = 1400;
+Chart.defaults.animation.easing = 'easeInOutQuart';
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Aritzia Gross Margin %',
+        data: aritziaData,
+        borderColor: '#E8A838',
+        backgroundColor: 'rgba(232,168,56,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#E8A838',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: true,
+      },
+      {
+        label: 'Lululemon Gross Margin %',
+        data: lululemonData,
+        borderColor: '#7BAFD4',
+        backgroundColor: 'rgba(123,175,212,0.06)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#7BAFD4',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: true,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1C2F45',
+        borderColor: '#253A52',
+        borderWidth: 1,
+        titleColor: '#7A90A4',
+        bodyColor: '#F0F4F8',
+        padding: 12,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label.split(' ')[0]}: ${ctx.parsed.y.toFixed(1)}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1C2F45', drawBorder: false },
+        ticks: {
+          color: '#7A90A4',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        },
+        border: { color: '#253A52' }
+      },
+      y: {
+        min: 30,
+        max: 70,
+        grid: { color: '#1C2F45', drawBorder: false },
+        ticks: {
+          color: '#7A90A4',
+          font: { family: "'JetBrains Mono', monospace", size: 11 },
+          callback: v => v + '%',
+          stepSize: 10
+        },
+        border: { color: '#253A52' }
+      }
+    }
+  }
+});
+</script>
+</div>
+<script>(function(){
+
+const ctx = document.getElementById('cs1-chart').getContext('2d');
+
+// Data
+const aritziaData  = [38.5, 43.1, 44.9];
+const lululemonData = [58.3, 59.2, 56.6];
+const labels = ['Year 1', 'Year 2', 'Year 3'];
+
+// Animation: draw lines in
+Chart.defaults.animation.duration = 1400;
+Chart.defaults.animation.easing = 'easeInOutQuart';
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Aritzia Gross Margin %',
+        data: aritziaData,
+        borderColor: '#E8A838',
+        backgroundColor: 'rgba(232,168,56,0.08)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#E8A838',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: true,
+      },
+      {
+        label: 'Lululemon Gross Margin %',
+        data: lululemonData,
+        borderColor: '#7BAFD4',
+        backgroundColor: 'rgba(123,175,212,0.06)',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#7BAFD4',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.35,
+        fill: true,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1C2F45',
+        borderColor: '#253A52',
+        borderWidth: 1,
+        titleColor: '#7A90A4',
+        bodyColor: '#F0F4F8',
+        padding: 12,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label.split(' ')[0]}: ${ctx.parsed.y.toFixed(1)}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1C2F45', drawBorder: false },
+        ticks: {
+          color: '#7A90A4',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        },
+        border: { color: '#253A52' }
+      },
+      y: {
+        min: 30,
+        max: 70,
+        grid: { color: '#1C2F45', drawBorder: false },
+        ticks: {
+          color: '#7A90A4',
+          font: { family: "'JetBrains Mono', monospace", size: 11 },
+          callback: v => v + '%',
+          stepSize: 10
+        },
+        border: { color: '#253A52' }
+      }
+    }
+  }
+});
+
+})();</script></div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-head">
+            <div class="cs-head-left">
+              <div class="cs-num">Case Study 02</div>
+              <h3>Glossier: From DTC Cult Brand to Sephora Wholesale</h3>
+              <p>A breakdown of Glossier's move from pure direct-to-consumer sales into Sephora's wholesale network, what it changed, and three recommendations I'd make if I were advising the brand.</p>
+            </div>
+            <button class="cs-open-btn" data-open="cs2">
+              Open full screen
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </button>
+          </div>
+          <div class="cs-frame-wrap cs-inline-frame"><div class="cs-inline-wrap">
+<style scoped>
+
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #FDF8FC;
+    --bg2:      #FAF3F9;
+    --bg3:      #F5ECF4;
+    --border:   #E8D8E6;
+    --plum:     #6B2D6B;
+    --rose:     #C4688F;
+    --blush:    #E8A4BF;
+    --lilac:    #B8A0D0;
+    --mauve:    #D4B0C8;
+    --ink:      #2A1A2E;
+    --muted:    #8A6E88;
+    --mono:     'JetBrains Mono', monospace;
+    --serif:    'DM Serif Display', serif;
+    --sans:     'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--plum);
+    padding: 22px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .hdr-left { display: flex; flex-direction: column; gap: 3px; }
+  .hdr-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blush);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .hdr-name { font-size: 13px; font-weight: 500; color: #fff; }
+  .hdr-right { display: flex; gap: 10px; flex-wrap: wrap; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.65);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+  .tag.accent { border-color: var(--blush); color: var(--blush); }
+
+  /* HERO */
+  .hero {
+    background: var(--plum);
+    padding: 72px 52px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: 'G';
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: 320px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blush);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--blush);
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    max-width: 580px;
+    line-height: 1.75;
+  }
+
+  /* INTRO STRIP */
+  .intro-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .intro-cell {
+    padding: 30px 36px;
+    border-right: 1px solid var(--border);
+  }
+  .intro-cell:last-child { border-right: none; }
+  .intro-val {
+    font-family: var(--mono);
+    font-size: clamp(22px, 2.5vw, 34px);
+    font-weight: 500;
+    color: var(--plum);
+    line-height: 1;
+    margin-bottom: 7px;
+  }
+  .intro-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+  .intro-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* SECTION */
+  .section {
+    padding: 56px 52px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section.alt { background: var(--bg2); }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-eyebrow span { color: var(--rose); }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 400;
+    color: var(--plum);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 680px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 91px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item:first-child .tl-content { border-top: 1px solid var(--border); }
+  .tl-year {
+    padding: 22px 20px 22px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--rose);
+    font-weight: 500;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .tl-dot {
+    width: 9px; height: 9px;
+    background: var(--rose);
+    border-radius: 50%;
+    position: absolute;
+    right: -4px;
+    top: 26px;
+  }
+  .tl-content {
+    padding: 20px 0 20px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tl-title { font-weight: 600; font-size: 14px; margin-bottom: 5px; color: var(--plum); }
+  .tl-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .tl-stat {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--rose);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* CHANNEL GRID */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .channel-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .channel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--rose);
+  }
+  .channel-card.secondary::before { background: var(--lilac); }
+  .channel-card.tertiary::before { background: var(--mauve); }
+  .channel-name {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+  }
+  .channel-stat {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--plum);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .channel-label { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .channel-desc { font-size: 13px; color: var(--ink); line-height: 1.65; }
+
+  /* PIVOT TABLE */
+  .pivot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .pivot-card {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pivot-card-header {
+    padding: 16px 22px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pivot-card-header.before { background: var(--bg3); color: var(--plum); }
+  .pivot-card-header.after { background: var(--plum); color: #fff; }
+  .pivot-card-header .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    flex-shrink: 0;
+  }
+  .pivot-card-header.after .dot { background: var(--blush); }
+  .pivot-body { padding: 20px 22px; background: #fff; }
+  .pivot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    gap: 12px;
+  }
+  .pivot-row:last-child { border-bottom: none; }
+  .pivot-row-label { color: var(--muted); }
+  .pivot-row-val { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--plum); }
+  .pivot-row-val.good { color: #4a9e7a; }
+  .pivot-row-val.warn { color: #c47a45; }
+
+  /* FRAMEWORK BOXES */
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .fw-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 3px;
+  }
+  .fw-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  .fw-title { font-size: 15px; font-weight: 600; color: var(--plum); margin-bottom: 10px; }
+  .fw-body { font-size: 13px; color: var(--ink); line-height: 1.7; }
+
+  /* CHART */
+  .chart-wrap { position: relative; width: 100%; height: 280px; }
+  .chart-legend { display: flex; gap: 22px; margin-bottom: 20px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .chart-note { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; }
+
+  /* RECOMMENDATIONS */
+  .rec-grid { display: flex; flex-direction: column; gap: 16px; }
+  .rec-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 22px 24px;
+    align-items: start;
+  }
+  .rec-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--border);
+    line-height: 1;
+    text-align: right;
+  }
+  .rec-body {}
+  .rec-title { font-size: 15px; font-weight: 600; color: var(--plum); margin-bottom: 7px; }
+  .rec-text { font-size: 13px; color: var(--ink); line-height: 1.7; }
+  .rec-metric {
+    display: inline-block;
+    margin-top: 9px;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--rose);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* SOURCES */
+  .sources-list { display: flex; flex-direction: column; gap: 8px; }
+  .source-item { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; gap: 12px; }
+  .source-num { color: var(--border); flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    background: var(--plum);
+    padding: 26px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-l { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.5); }
+  .footer-r { font-family: var(--mono); font-size: 11px; color: var(--blush); border: 1px solid var(--blush); padding: 5px 12px; border-radius: 2px; opacity: 0.8; }
+
+  @media (max-width: 760px) {
+    header, .hero, .intro-cell, .section, footer { padding-left: 24px; padding-right: 24px; }
+    .intro-strip, .channel-grid, .framework-grid, .pivot-grid { grid-template-columns: 1fr; }
+    .intro-cell { border-right: none; border-bottom: 1px solid var(--border); }
+    .hero::after { display: none; }
+  }
+
+</style>
+<header>
+  <div class="hdr-left">
+    <div class="hdr-eyebrow">Marketing Case Study &middot; Beauty &amp; Consumer Brand Strategy</div>
+    <div class="hdr-name">Zoya Faraz &middot; Incoming BCom Econ &amp; Finance, Rotman Commerce, U of T &rsquo;30</div>
+  </div>
+  <div class="hdr-right">
+    <div class="tag">June 2026</div>
+    <div class="tag accent">Portfolio Project 02</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Glossier Inc. &mdash; Brand &amp; Channel Strategy Analysis</div>
+  <h1>How a beauty blog<br>built a <em>$1.8 billion brand,</em><br>then had to reinvent it.</h1>
+  <p>Glossier spent nine years proving that community could replace advertising. Then rising customer acquisition costs forced the brand to enter the very retail system it was built to disrupt. This case study maps what actually changed, what it cost, and whether the bet paid off.</p>
+</div>
+
+<div class="intro-strip">
+  <div class="intro-cell">
+    <div class="intro-val">$1.8B</div>
+    <div class="intro-label">Peak valuation (2021)</div>
+    <div class="intro-sub">Backed by $266M in VC funding</div>
+  </div>
+  <div class="intro-cell">
+    <div class="intro-val">~$300M</div>
+    <div class="intro-label">Est. revenue (2023)</div>
+    <div class="intro-sub">Driven by Sephora launch</div>
+  </div>
+  <div class="intro-cell">
+    <div class="intro-val">650</div>
+    <div class="intro-label">Sephora doors entered</div>
+    <div class="intro-sub">From zero wholesale in 2022</div>
+  </div>
+  <div class="intro-cell">
+    <div class="intro-val">$100M+</div>
+    <div class="intro-label">Sephora sales, year one</div>
+    <div class="intro-sub">Wholesale became biggest growth engine</div>
+  </div>
+</div>
+
+<!-- SECTION 1: ORIGIN -->
+<div class="section alt">
+  <div class="section-eyebrow"><span>01</span> &mdash; Origin &amp; Brand Architecture</div>
+  <div class="section-title">The blog that became a brand</div>
+  <div class="section-intro">Glossier is one of the few companies that started by building an audience before building a product. Understanding how it got to $1.8B requires starting at the blog, because everything downstream, the brand voice, the product strategy, the community flywheel, was designed around what readers were already saying.</div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2010<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Into the Gloss launches</div>
+        <div class="tl-desc">Emily Weiss, then an editorial assistant at Vogue, starts a beauty blog built around one insight: women were being marketed at, not spoken to. ITG opened the conversation the other direction, asking readers what they actually used, liked, and wanted. The comment section became an early product brief.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2014<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Glossier launches as a DTC-only brand</div>
+        <div class="tl-desc">Four products. No retail partners. No wholesale. The first collection was developed using feedback from the ITG community, who had spent four years telling the brand exactly what they wanted. Products like Boy Brow and Balm Dotcom built a cult following almost immediately. The DTC model kept Glossier in full control of pricing, customer data, and brand narrative.</div>
+        <span class="tl-stat">Founded with 4 hero products</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2019<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Unicorn status and the Glossier Play failure</div>
+        <div class="tl-desc">Glossier hit $100M+ in annual revenue and a $1.2B unicorn valuation in March 2019. The same month, it launched Glossier Play, a bold-colour makeup sub-brand with glitter gels and graphic liner. It was the brand's first major departure from its "your face but better" aesthetic. Customers did not reject it with hostility. They ignored it. Glossier Play was quietly discontinued within two years.</div>
+        <span class="tl-stat">Key lesson: brand extension must stay inside the brand's existing emotional contract</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020-22<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Pandemic, layoffs, and a structural problem</div>
+        <div class="tl-desc">Glossier shuttered its entire physical retail footprint during the pandemic. In 2022 it laid off one third of its corporate workforce as DTC growth stalled. The structural issue was not unique to Glossier: digital customer acquisition costs had risen sharply across all categories, making the pure-DTC model increasingly expensive to scale. The brand that disrupted retail was now being disrupted by the same economics that retail exists to solve.</div>
+        <span class="tl-stat">33% of corporate workforce laid off in 2022</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2023<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">The Sephora pivot: wholesale at scale</div>
+        <div class="tl-desc">February 2023: Glossier enters 650 Sephora locations across the US and Canada, plus Sephora's website and app. This was not a soft test. It was a full channel launch. The signal the brand had already sent the market was clear: Sephora search interest for Glossier had grown 200% between 2021 and 2022, meaning customers were already looking for the brand there before Glossier was there to be found.</div>
+        <span class="tl-stat">$100M+ in Sephora sales within the first year &bull; #Glossier TikTok views tripled from 1B to 3B</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024-25<div class="tl-dot"></div></div>
+      <div class="tl-content">
+        <div class="tl-title">Omnichannel expansion and new leadership</div>
+        <div class="tl-desc">Glossier enters Sephora UK in 2024 and begins international expansion across Europe and the Middle East, targeting Sephora's 30M+ member loyalty base. New CEO Kyle Leahy installs a Chief Commercial Officer, CMO, and Chief Creative Director to manage the brand across both DTC and wholesale simultaneously. The Olivia Rodrigo partnership and a multi-year WNBA sponsorship signal a move toward broader cultural relevance beyond the brand's original urban, millennial core.</div>
+        <span class="tl-stat">73% year-over-year brand growth reported post-Sephora launch</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: CHANNELS -->
+<div class="section">
+  <div class="section-eyebrow"><span>02</span> &mdash; Channel &amp; Social Strategy</div>
+  <div class="section-title">How Glossier built a marketing engine without a marketing budget</div>
+  <div class="section-intro">Before the Sephora pivot, Glossier's marketing was notable specifically because it did not look like marketing. The brand turned customers into content creators, comment sections into product briefs, and UGC into a free distribution channel. The numbers below reflect where that strategy stood at its peak.</div>
+
+  <div class="channel-grid">
+    <div class="channel-card">
+      <div class="channel-name">Instagram</div>
+      <div class="channel-stat">2.6M</div>
+      <div class="channel-label">Followers (2023)</div>
+      <div class="channel-desc">Glossier's primary owned channel from 2014 to roughly 2021. Strategy centred on reposting real customer photos, diverse representation, and macro product photography with a consistent pastel, minimalist aesthetic. The brand used Instagram Stories to run product polls, feeding feedback directly into development cycles. Engagement was built on relatability, not aspiration.</div>
+    </div>
+    <div class="channel-card secondary">
+      <div class="channel-name">TikTok</div>
+      <div class="channel-stat">3B+</div>
+      <div class="channel-label">#Glossier views after Sephora launch</div>
+      <div class="channel-desc">TikTok views under #Glossier tripled from roughly 1 billion to 3 billion in the period around the Sephora launch. Glossier's physical store design had long been built to encourage in-store content creation, with oversized mirrors and pink-dominated interiors. Sephora put Glossier products in front of a new discovery audience who then created TikTok content organically, extending reach the brand could not have bought efficiently through paid channels alone.</div>
+    </div>
+    <div class="channel-card tertiary">
+      <div class="channel-name">UGC &amp; Community</div>
+      <div class="channel-stat">79%</div>
+      <div class="channel-label">Of consumers rely on UGC when choosing products</div>
+      <div class="channel-desc">Glossier ran hashtag campaigns including #GlossierPink and #GlossierRep that turned customers into unpaid brand ambassadors. Its "Into the Gloss" blog continued to function as long-form editorial content feeding SEO and brand credibility. The brand also pioneered a Rep programme, gifting micro-influencers products in exchange for authentic content, years before "micro-influencer strategy" became an industry term.</div>
+    </div>
+    <div class="channel-card">
+      <div class="channel-name">DTC Website</div>
+      <div class="channel-stat">$134M</div>
+      <div class="channel-label">glossier.com revenue (2024)</div>
+      <div class="channel-desc">The DTC channel remained active and significant even after the Sephora pivot. The US accounts for 74% of glossier.com revenue, with a 5-10% growth projection for 2025. DTC preserves higher margins (no retailer margin share), direct customer data access, and the brand control that wholesale cannot offer. The challenge is that paid digital acquisition costs have made DTC harder to grow efficiently at scale.</div>
+    </div>
+    <div class="channel-card secondary">
+      <div class="channel-name">Wholesale (Sephora)</div>
+      <div class="channel-stat">650+</div>
+      <div class="channel-label">Sephora doors (US, Canada, UK)</div>
+      <div class="channel-desc">The Sephora channel contributed over $100M in first-year sales, making wholesale the brand's fastest-growing revenue line almost immediately. Glossier entered Sephora UK in 2024 and is expanding further into Europe and the Middle East. The trade-off: Sephora takes a wholesale margin cut, Glossier loses direct customer data visibility, and the brand's positioning shifts from "you have to seek us out" to "we're on the shelf next to 40 other brands."</div>
+    </div>
+    <div class="channel-card tertiary">
+      <div class="channel-name">Physical Flagship Stores</div>
+      <div class="channel-stat">3</div>
+      <div class="channel-label">Remaining flagship stores (NY, LA, London)</div>
+      <div class="channel-desc">After closing nine of twelve stores, Glossier kept only the three that drive 55% of store revenue and 60% of new in-store customers. The surviving flagships are being repositioned as "playgrounds" for brand experience rather than primary sales drivers. This mirrors a broader luxury retail insight: the best physical retail is a marketing asset measured in brand equity and social content generated, not revenue per square foot.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: THE PIVOT -->
+<div class="section alt">
+  <div class="section-eyebrow"><span>03</span> &mdash; The DTC to Wholesale Pivot</div>
+  <div class="section-title">What actually changed, and what it cost</div>
+  <div class="section-intro">The Sephora pivot was not just a distribution decision. It changed Glossier's customer acquisition model, its brand accessibility, its margin structure, and the implicit promise it had made to its original community. The table below shows the before and after across the most relevant marketing and commercial dimensions.</div>
+
+  <div class="pivot-grid">
+    <div class="pivot-card">
+      <div class="pivot-card-header before"><div class="dot"></div>Before Sephora (pre-2023): Pure DTC</div>
+      <div class="pivot-body">
+        <div class="pivot-row"><span class="pivot-row-label">Distribution</span><span class="pivot-row-val warn">Glossier.com only</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Customer acquisition</span><span class="pivot-row-val warn">Entirely paid digital + organic</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">New customer discovery</span><span class="pivot-row-val warn">Instagram, blog, word of mouth</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Brand control</span><span class="pivot-row-val good">Total (own channel, own data)</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Gross margin</span><span class="pivot-row-val good">Higher (no retailer margin share)</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Brand perception</span><span class="pivot-row-val good">Exclusive, cult, "seek it out"</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">CAC trajectory</span><span class="pivot-row-val warn">Rising sharply (industry-wide)</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Revenue growth</span><span class="pivot-row-val warn">Stalling by 2022</span></div>
+      </div>
+    </div>
+    <div class="pivot-card">
+      <div class="pivot-card-header after"><div class="dot"></div>After Sephora (2023 onward): Omnichannel</div>
+      <div class="pivot-body">
+        <div class="pivot-row"><span class="pivot-row-label">Distribution</span><span class="pivot-row-val good">DTC + 650 Sephora doors + flagships</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Customer acquisition</span><span class="pivot-row-val good">Sephora's 30M+ loyalty base</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">New customer discovery</span><span class="pivot-row-val good">In-store + TikTok (#Glossier: 1B to 3B views)</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Brand control</span><span class="pivot-row-val warn">Reduced (shelf placement, retailer context)</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Gross margin</span><span class="pivot-row-val warn">Lower on wholesale volume</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Brand perception</span><span class="pivot-row-val">More accessible, less exclusive</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">CAC trajectory</span><span class="pivot-row-val good">Partially offset via Sephora traffic</span></div>
+        <div class="pivot-row"><span class="pivot-row-label">Revenue growth</span><span class="pivot-row-val good">$100M+ in Sephora year-one alone</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: CHART -->
+<div class="section">
+  <div class="section-eyebrow"><span>04</span> &mdash; Revenue Trajectory</div>
+  <div class="section-title">The numbers behind the pivot</div>
+  <div class="section-intro">Glossier is a private company and does not publish audited financials. The figures below are compiled from disclosed projections, press reports, and analyst estimates. They illustrate the general trajectory, not precise audited results.</div>
+
+  <div class="chart-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--rose)"></div>Est. Total Revenue ($M USD)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--lilac)"></div>DTC (glossier.com) Revenue ($M USD)</div>
+  </div>
+  <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
+  <div class="chart-note">* All figures estimated. Sources: Contrary Research, CanvasBusinessModel, Latterly.org, Beauty Independent. Glossier has not publicly disclosed audited annual revenues.</div>
+</div>
+
+<!-- SECTION 5: FRAMEWORK -->
+<div class="section alt">
+  <div class="section-eyebrow"><span>05</span> &mdash; Marketing Framework Analysis</div>
+  <div class="section-title">Four lenses on what Glossier actually did</div>
+  <div class="section-intro">Marketing case studies typically analyse a brand through standard frameworks: the 4 Ps, a SWOT, positioning, and the customer acquisition model. Below I apply each to Glossier's omnichannel transition specifically, rather than the brand overall.</div>
+
+  <div class="framework-grid">
+    <div class="fw-box">
+      <div class="fw-label">The 4 Ps &mdash; After the Pivot</div>
+      <div class="fw-title">Product, Price, Place, Promotion</div>
+      <div class="fw-body">
+        <strong style="color:var(--plum)">Product:</strong> Largely unchanged. Hero SKUs (Boy Brow, Cloud Paint, Balm Dotcom, Glossier You fragrance) remain the core. Product strategy post-pivot has focused on depth over breadth: shade extensions, minis, and seasonal sets rather than new category entry. The Glossier Play failure in 2019 established a clear constraint: new products must stay inside the "your face but better" aesthetic contract.<br><br>
+        <strong style="color:var(--plum)">Price:</strong> Mid-premium positioning unchanged, typically $12 to $45. Sephora distribution has not triggered visible discounting. Maintaining price integrity across DTC and wholesale is a known challenge; Glossier has managed it so far by keeping the same prices in both channels.<br><br>
+        <strong style="color:var(--plum)">Place:</strong> This is where the most significant change occurred. Glossier moved from one channel (DTC website) to four (DTC, Sephora in-store, Sephora digital, and flagship retail). Each channel requires different operational capacity, different sell-through metrics, and different customer data strategies.<br><br>
+        <strong style="color:var(--plum)">Promotion:</strong> Cultural partnerships (Olivia Rodrigo, WNBA) signal a deliberate move to expand the brand beyond its original audience. The organic UGC engine remains active; Sephora created a new top-of-funnel by putting products in front of customers who had no prior Glossier touchpoint.
+      </div>
+    </div>
+    <div class="fw-box">
+      <div class="fw-label">SWOT &mdash; Current Position (2025-26)</div>
+      <div class="fw-title">Strengths, Weaknesses, Opportunities, Threats</div>
+      <div class="fw-body">
+        <strong style="color:var(--plum)">Strengths:</strong> Genuinely iconic hero products with strong repeat purchase. A community that predates the brand's commercial existence. A visual identity that is immediately recognisable and difficult to replicate cheaply. Multi-year head start in community-driven content strategy.<br><br>
+        <strong style="color:var(--plum)">Weaknesses:</strong> Private company with undisclosed margins makes financial discipline hard to verify externally. The brand's exclusivity, once a strength, is partially eroded by mass-market Sephora presence. DTC growth has slowed and become more expensive to sustain.<br><br>
+        <strong style="color:var(--plum)">Opportunities:</strong> International expansion through Sephora's 30M-member loyalty ecosystem. Prestige fragrance is growing roughly 2x the broader beauty category, and Glossier You is already a top Sephora seller. Glossier has 2.7K+ Sephora doors globally it has not yet entered.<br><br>
+        <strong style="color:var(--plum)">Threats:</strong> E.l.f., Charlotte Tilbury, and other brands are using the same community playbook at lower price points. Gen Z product discovery has shifted toward TikTok Shop, where Glossier's aesthetic is less naturally algorithmic than bolder, more demonstrable beauty brands.
+      </div>
+    </div>
+    <div class="fw-box">
+      <div class="fw-label">Customer Acquisition Model</div>
+      <div class="fw-title">How the economics shifted</div>
+      <div class="fw-body">
+        The central tension in Glossier's story is CAC (customer acquisition cost) vs. LTV (lifetime value). The original DTC model had high LTV per customer because Glossier owned the data, could personalise re-engagement, and retained the full margin on repeat purchases. But CAC in paid digital channels rose roughly 60% across the DTC beauty category between 2019 and 2022 (a market-wide trend, not Glossier-specific).<br><br>
+        Sephora solves a specific part of this problem: it places Glossier products in front of customers who are already in a high-intent shopping environment, without Glossier paying a digital acquisition cost per visitor. The trade-off is margin: Sephora takes a wholesale cut on every unit sold through its channels. The bet Glossier made is that the volume and new-customer discovery value of Sephora outweighs the margin reduction. Year-one results ($100M+) suggest the volume side of that bet was correct. Whether it dilutes LTV over time by reducing the perceived exclusivity of the brand is a longer-term question.
+      </div>
+    </div>
+    <div class="fw-box">
+      <div class="fw-label">Brand Positioning</div>
+      <div class="fw-title">What Glossier sells that is not a product</div>
+      <div class="fw-body">
+        Glossier's brand positioning has always been a specific emotional proposition: beauty as an expression of who you already are, not a transformation into someone else. "Skin first, makeup second, smile always" is not a tagline; it is the entire product brief, the content strategy, and the community filter in one sentence.<br><br>
+        This positioning is both Glossier's biggest asset and its biggest constraint. It is the asset because it generated a loyal, vocal, UGC-producing community that marketed the brand for free for nearly a decade. It is the constraint because any product, campaign, or channel decision that contradicts it, like Glossier Play's bold colours in 2019, produces customer rejection rather than indifference.<br><br>
+        The Sephora pivot is the first major positioning test: can "the brand you had to seek out" maintain its emotional resonance when it is available in 650 mass-market retail locations? The early data, $100M in year-one sales and tripling TikTok views, suggests the brand equity survived the transition. The longer-term brand equity question is not yet answerable.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: RECOMMENDATIONS -->
+<div class="section">
+  <div class="section-eyebrow"><span>06</span> &mdash; My Analysis &amp; Recommendations</div>
+  <div class="section-title">Three things I would do differently if I were advising Glossier right now</div>
+  <div class="section-intro">This section is my own view, not a summary of existing reporting. A marketing case study should end with a position, not just a description of what already happened. Below are three specific recommendations with a rationale for each, based on the data and framework analysis above.</div>
+
+  <div class="rec-grid">
+    <div class="rec-item">
+      <div class="rec-num">01</div>
+      <div class="rec-body">
+        <div class="rec-title">Build a visible DTC loyalty programme before Sephora's loyalty base absorbs your repeat buyers</div>
+        <div class="rec-text">Right now, a Glossier customer who discovers the brand through Sephora accumulates Beauty Insider points with Sephora, not with Glossier. Over time, this transfers repeat purchase loyalty to the retailer rather than the brand. Glossier should introduce a DTC-specific loyalty mechanic, first access to launches, loyalty pricing on refills, or community content access that gives customers a reason to return to glossier.com even after discovering the brand in Sephora. The goal is to use Sephora as a top-of-funnel acquisition channel while converting Sephora customers to DTC repeat buyers over time. The data already shows DTC generates $134M annually; protecting that with a loyalty layer is lower cost than acquiring net new customers through paid digital.</div>
+        <span class="rec-metric">Reference: Sephora has 30M+ Beauty Insider members &mdash; without a competing loyalty mechanism, Glossier's repeat purchase data goes to Sephora, not Glossier</span>
+      </div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">02</div>
+      <div class="rec-body">
+        <div class="rec-title">Double the fragrance category before competitors colonise the prestige-adjacent space Glossier You created</div>
+        <div class="rec-text">Glossier You is already a top seller at Sephora. Prestige fragrance is growing at roughly 2x the broader beauty market. Glossier has two things most fragrance brands don't: a built-in community that trusts the brand's product sensibility, and a positioning ("your skin but better") that translates directly into "your scent but better." The risk is waiting. Brands like Dedcool, Skylar, and Ds &amp; Durga are building the same community-forward fragrance positioning with smaller audiences right now. Glossier has a narrow window to establish itself as the category-defining name in approachable prestige fragrance before that space gets crowded. The 2024 expansion of Glossier You scent profiles is a good start but moves too slowly given the market opportunity.</div>
+        <span class="rec-metric">Prestige fragrance growing ~2x broader beauty category &bull; Glossier You already a top Sephora seller</span>
+      </div>
+    </div>
+    <div class="rec-item">
+      <div class="rec-num">03</div>
+      <div class="rec-body">
+        <div class="rec-title">Use TikTok Shop as a third channel rather than treating it as a social media problem to manage</div>
+        <div class="rec-text">Glossier's aesthetic works on TikTok at the awareness level (#Glossier at 3B views) but the brand has been slow to connect that awareness directly to purchase through TikTok Shop. The brands winning on TikTok Shop in beauty right now are mostly ones with bold, demonstrable products: pigmented lip products, dramatic skin transformations, colour cosmetics. These are not Glossier's core. But Glossier You fragrance, Cloud Paint blush, and Boy Brow are genuinely demonstrable in a short video format. A targeted TikTok Shop strategy for two or three hero SKUs specifically, rather than a broad catalogue push, would let Glossier test the channel with minimal brand dilution risk while capturing intent from the audiences already generating 3 billion views of the #Glossier hashtag.</div>
+        <span class="rec-metric">TikTok Shop beauty category growing significantly YoY &bull; #Glossier: 3B+ views, but no direct purchase path from that content</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: SOURCES -->
+<div class="section alt">
+  <div class="section-eyebrow"><span>07</span> &mdash; Data Sources</div>
+  <div class="sources-list">
+    <div class="source-item"><span class="source-num">[1]</span> Contrary Research: Glossier Business Breakdown &amp; Founding Story, 2023</div>
+    <div class="source-item"><span class="source-num">[2]</span> Double V Consulting: Glossier DTC &mdash; Why Community Alone Could Not Sustain a Billion-Dollar Brand, April 2026</div>
+    <div class="source-item"><span class="source-num">[3]</span> Retail Dive: Glossier Enters First Wholesale Deal with Sephora, 2022</div>
+    <div class="source-item"><span class="source-num">[4]</span> Retail Dive: Glossier Executive Team Changes, Chief Commercial Officer, 2023</div>
+    <div class="source-item"><span class="source-num">[5]</span> Beauty Independent: What Does Glossier's Impending Sephora Launch Signal, 2022</div>
+    <div class="source-item"><span class="source-num">[6]</span> CanvasBusinessModel: Glossier Marketing Strategy &amp; Growth Strategy, 2024-2025</div>
+    <div class="source-item"><span class="source-num">[7]</span> BusinessModelCanvasTemplate: Glossier Growth Strategy &amp; Future Prospects, March 2026</div>
+    <div class="source-item"><span class="source-num">[8]</span> Latterly.org: Glossier Marketing Strategy 2025</div>
+    <div class="source-item"><span class="source-num">[9]</span> Young Urban Project: Glossier Case Study, April 2026</div>
+    <div class="source-item"><span class="source-num">[10]</span> Sprout Social: How Glossier Contours Their 2023 Social Strategy Around TikTok &amp; Community</div>
+    <div class="source-item"><span class="source-num">[11]</span> Enrich Labs: Glossier Marketing Strategy Case Study, 2025</div>
+    <div class="source-item"><span class="source-num">[12]</span> Marketing Monk: Glossier SWOT &amp; 4Ps Marketing Strategy, 2025</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-l">Zoya Faraz &middot; Rotman Commerce, University of Toronto &middot; Class of 2030 &middot; Built June 2026</div>
+  <div class="footer-r">Portfolio Project 02 of 04</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+new Chart(document.getElementById('revenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+    datasets: [
+      {
+        label: 'Est. Total Revenue ($M)',
+        data: [50, 100, 80, 140, 180, 300, 340],
+        backgroundColor: 'rgba(196, 104, 143, 0.18)',
+        borderColor: '#C4688F',
+        borderWidth: 2,
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        label: 'DTC (glossier.com) Est. Revenue ($M)',
+        data: [50, 100, 75, 130, 155, 160, 134],
+        type: 'line',
+        borderColor: '#B8A0D0',
+        backgroundColor: 'transparent',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#B8A0D0',
+        pointRadius: 4,
+        tension: 0.35,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 1400, easing: 'easeInOutQuart' },
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#FAF3F9',
+        borderColor: '#E8D8E6',
+        borderWidth: 1,
+        titleColor: '#8A6E88',
+        bodyColor: '#2A1A2E',
+        padding: 12,
+        callbacks: {
+          label: c => ` ${c.dataset.label.split('(')[0].trim()}: ~$${c.parsed.y}M`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#F5ECF4' },
+        border: { color: '#E8D8E6' },
+        ticks: { color: '#8A6E88', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      y: {
+        grid: { color: '#F5ECF4' },
+        border: { color: '#E8D8E6' },
+        ticks: {
+          color: '#8A6E88',
+          font: { family: "'JetBrains Mono', monospace", size: 11 },
+          callback: v => '$' + v + 'M'
+        }
+      }
+    }
+  }
+});
+</script>
+</div>
+<script>(function(){
+
+new Chart(document.getElementById('revenueChart'), {
+  type: 'bar',
+  data: {
+    labels: ['2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+    datasets: [
+      {
+        label: 'Est. Total Revenue ($M)',
+        data: [50, 100, 80, 140, 180, 300, 340],
+        backgroundColor: 'rgba(196, 104, 143, 0.18)',
+        borderColor: '#C4688F',
+        borderWidth: 2,
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        label: 'DTC (glossier.com) Est. Revenue ($M)',
+        data: [50, 100, 75, 130, 155, 160, 134],
+        type: 'line',
+        borderColor: '#B8A0D0',
+        backgroundColor: 'transparent',
+        borderWidth: 2.5,
+        pointBackgroundColor: '#B8A0D0',
+        pointRadius: 4,
+        tension: 0.35,
+        order: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    animation: { duration: 1400, easing: 'easeInOutQuart' },
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#FAF3F9',
+        borderColor: '#E8D8E6',
+        borderWidth: 1,
+        titleColor: '#8A6E88',
+        bodyColor: '#2A1A2E',
+        padding: 12,
+        callbacks: {
+          label: c => ` ${c.dataset.label.split('(')[0].trim()}: ~$${c.parsed.y}M`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#F5ECF4' },
+        border: { color: '#E8D8E6' },
+        ticks: { color: '#8A6E88', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      y: {
+        grid: { color: '#F5ECF4' },
+        border: { color: '#E8D8E6' },
+        ticks: {
+          color: '#8A6E88',
+          font: { family: "'JetBrains Mono', monospace", size: 11 },
+          callback: v => '$' + v + 'M'
+        }
+      }
+    }
+  }
+});
+
+})();</script></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WRITING ============ -->
+    <section id="writing" class="bg-sky">
+      <div class="wrap">
+        <div class="eyebrow c-blue">Writing</div>
+        <h2 class="sec-title">I write often, mostly about economics, psychology, and whatever I'm reading that week.</h2>
+        <p class="sec-intro">Six pieces are linked below, opening in a new tab.</p>
+        <div class="write-grid">
+          <a class="write-card" href="https://drive.google.com/file/d/1XS1p-zlOOngip3K_z-rVueiu7NHF3583/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>My Substack</h3>
+            <p>Personal essays on science, economics, and personal development.</p>
+          </a>
+          <a class="write-card" href="https://drive.google.com/file/d/1QBhVlbMc3dEJ0FGO9oY5rvpK5YsIScoK/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 4 2 7h10c0-3 2-4 2-7a7 7 0 0 0-7-7Z"></path><path d="M9 19h6M10 22h4"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>Climate Essay Competition</h3>
+            <p>First place finish in a competitive climate writing tournament.</p>
+          </a>
+          <a class="write-card" href="https://drive.google.com/file/d/16XutbAnTGnfgmibxQ2y1SzL-zBsZMv3h/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m7 14 4-5 3 3 5-7"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>Finance Newsletter</h3>
+            <p>Writing for The Finance League's newsletter on markets and business concepts.</p>
+          </a>
+          <a class="write-card" href="https://drive.google.com/file/d/1touuEEjlMWRV-etdheHyBh0TaNQ76bot/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>Psychology Research Paper</h3>
+            <p>An independent research piece on behavioral psychology.</p>
+          </a>
+          <a class="write-card" href="https://drive.google.com/file/d/14EvtVV4z4vhi9R9dGchQN1FQu1toJ2Eo/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>What Makes a Good Leader?</h3>
+            <p>An essay on leadership, written for a national-level competition.</p>
+          </a>
+          <a class="write-card" href="https://drive.google.com/file/d/1F6h5ja1CpC7LwmNq8GfCW7da5HSYXH-A/view?usp=drive_link" target="_blank" rel="noopener">
+            <div class="write-top">
+              <svg class="write-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19c-4 1-7-1-7-5 0-3 2-5 4-6-1 3 0 5 2 6 1-3 4-4 4-7 3 1 4 4 4 7 0 4-3 6-7 5Z"></path></svg>
+              <svg class="write-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+            </div>
+            <h3>Creative Prompt</h3>
+            <p>A short piece of creative writing, runner-up in a national-level competition.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COURSES ============ -->
+    <section id="courses" class="bg-lavender">
+      <div class="wrap">
+        <div class="eyebrow c-violet">Courses &amp; Certifications</div>
+        <h2 class="sec-title">Building the toolkit, one course at a time.</h2>
+        <div class="course-row">
+          <div class="course-card">
+            <div class="course-mark c-1">Yale</div>
+            <div class="course-topic">Narrative Economics</div>
+          </div>
+          <div class="course-card">
+            <div class="course-mark c-2">UCL School of Management</div>
+            <div class="course-topic">Corporate Strategy</div>
+          </div>
+          <div class="course-card">
+            <div class="course-mark c-3">Coursera Project Network</div>
+            <div class="course-topic">Microsoft Excel</div>
+          </div>
+          <div class="course-card">
+            <div class="course-mark c-4">HubSpot Academy</div>
+            <div class="course-topic">Inbound Marketing</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+      <div class="wrap">
+        <div class="eyebrow c-coral" style="justify-content:center;">Let's Work Together</div>
+        <h2>I'm looking for a team that wants this same energy.</h2>
+        <p class="lead">I reply fast, and I'd rather talk specifics than send a generic cover letter.</p>
+        <div class="contact-btns">
+          <a class="btn btn-primary" href="mailto:zoyaf4000@gmail.com" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="m4 6 8 7 8-7"></path></svg>
+            zoyaf4000@gmail.com
+          </a>
+          <a class="btn btn-coral" href="https://www.linkedin.com/in/zoya-faraz-58a734319/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M8 11v5M8 8v.01M12 16v-3.2c0-1 .8-1.8 1.8-1.8 1 0 1.7.8 1.7 1.8V16"></path></svg>
+            LinkedIn
+          </a>
+        </div>
+        <div class="contact-meta">+92 333 2279778</div>
+      </div>
+    </section>
+
+    <footer class="site-foot">Built and designed by Zoya Faraz, 2026</footer>
+
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  // ============ SMOOTH SCROLL + ACTIVE NAV ============
+  const allNavLinks = document.querySelectorAll('.side-nav a, .mobile-bar a');
+  const sections = document.querySelectorAll('main section');
+
+  allNavLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const id = link.getAttribute('data-target');
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        allNavLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('data-target') === id);
+        });
+      }
+    });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // ============ EXECUTION CHART ============
+  const execCtx = document.getElementById('execChart');
+  if (execCtx) {
+    new Chart(execCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Businesses Pitched', 'Team Members Led', 'Participants Managed', 'Students Served', 'Views Generated'],
+        datasets: [{
+          data: [50, 150, 2500, 10000, 30000],
+          backgroundColor: ['#FF6F8F', '#4FA3E3', '#7C5CFA', '#4FAE8C', '#7C5CFA'],
+          borderRadius: 6,
+          maxBarThickness: 34
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 1100, easing: 'easeOutQuart' },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#211A33',
+            padding: 10,
+            callbacks: { label: c => ' ' + c.parsed.x.toLocaleString() }
+          }
+        },
+        scales: {
+          x: {
+            type: 'logarithmic',
+            grid: { color: '#E7DDF7' },
+            ticks: { color: '#6A6280', font: { family: 'JetBrains Mono', size: 11 } }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: '#211A33', font: { family: 'Inter', size: 13, weight: 600 } }
+          }
+        }
+      }
+    });
+  }
+
+  // Case studies are now inlined directly in the HTML
+</script>
+
+</body>
+</html>
