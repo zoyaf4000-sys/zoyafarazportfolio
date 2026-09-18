@@ -1,6 +1,3 @@
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +11,7 @@ Index · HTML
   /* ============ RESET & TOKENS ============ */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: auto; }
- 
+
   :root {
     --lavender: #F4F0FB;
     --lavender-deep: #E7DDF7;
@@ -40,7 +37,7 @@ Index · HTML
     --r-sm: 10px;
     --sidebar-w: 282px;
   }
- 
+
   body {
     font-family: 'Inter', sans-serif;
     color: var(--ink);
@@ -49,19 +46,19 @@ Index · HTML
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
- 
+
   h1, h2, h3, h4 {
     font-family: 'Bricolage Grotesque', sans-serif;
     color: var(--ink);
     font-weight: 700;
     letter-spacing: -0.01em;
   }
- 
+
   a { color: inherit; text-decoration: none; }
   ul { list-style: none; }
   img, svg { display: block; max-width: 100%; }
   button { font-family: inherit; cursor: pointer; border: none; background: none; }
- 
+
   .script {
     font-family: 'Caveat', cursive;
     font-weight: 700;
@@ -71,15 +68,15 @@ Index · HTML
     transform: rotate(-3deg);
     padding: 0 2px;
   }
- 
+
   .mono { font-family: 'JetBrains Mono', monospace; }
- 
+
   :focus-visible {
     outline: 2.5px solid var(--violet);
     outline-offset: 3px;
     border-radius: 4px;
   }
- 
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.001ms !important;
@@ -88,10 +85,10 @@ Index · HTML
       scroll-behavior: auto !important;
     }
   }
- 
+
   /* ============ LAYOUT ============ */
   .layout { display: flex; min-height: 100vh; }
- 
+
   /* ============ SIDEBAR ============ */
   .sidebar {
     width: var(--sidebar-w);
@@ -106,7 +103,7 @@ Index · HTML
     z-index: 50;
     overflow-y: auto;
   }
- 
+
   .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
   .monogram {
     width: 50px; height: 50px;
@@ -121,7 +118,7 @@ Index · HTML
   .brand-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
   .brand-name { font-size: 17px; font-weight: 700; line-height: 1.2; }
   .brand-role { font-size: 11.5px; color: var(--ink-soft); line-height: 1.3; }
- 
+
   .grad-badge {
     display: inline-flex; align-items: center; gap: 6px;
     background: var(--coral);
@@ -135,7 +132,7 @@ Index · HTML
     width: fit-content;
   }
   .grad-badge svg { width: 14px; height: 14px; flex-shrink: 0; }
- 
+
   .status-row {
     display: flex; align-items: center; gap: 8px;
     font-size: 11.5px; color: var(--ink-soft);
@@ -155,7 +152,7 @@ Index · HTML
     70% { box-shadow: 0 0 0 7px rgba(79,174,140,0); }
     100% { box-shadow: 0 0 0 0 rgba(79,174,140,0); }
   }
- 
+
   .side-nav { display: flex; flex-direction: column; gap: 3px; flex: 1; }
   .side-nav a {
     display: flex; align-items: center; gap: 11px;
@@ -181,7 +178,7 @@ Index · HTML
     box-shadow: 0 3px 10px -4px rgba(124,92,250,0.3);
   }
   .side-nav a.active .idx { color: var(--violet); }
- 
+
   .side-foot { padding-top: 18px; margin-top: 10px; border-top: 1px solid var(--line); }
   .side-foot-label { font-size: 11px; color: var(--ink-faint); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; }
   .icon-row { display: flex; gap: 10px; }
@@ -196,20 +193,20 @@ Index · HTML
   }
   .icon-btn svg { width: 19px; height: 19px; }
   .icon-btn:hover { background: var(--violet); color: #fff; border-color: var(--violet); transform: translateY(-2px); }
- 
+
   /* ============ MOBILE TOP NAV ============ */
   .mobile-bar { display: none; }
- 
+
   /* ============ MAIN ============ */
   main { margin-left: var(--sidebar-w); flex: 1; min-width: 0; overflow: hidden; }
- 
+
   section { padding: 100px 64px; position: relative; }
   .wrap { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; }
- 
+
   .bg-lavender { background: var(--lavender); }
   .bg-blush { background: var(--blush); }
   .bg-sky { background: var(--sky); }
- 
+
   .eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -223,10 +220,10 @@ Index · HTML
   .eyebrow.c-violet { color: var(--violet-deep); }
   .eyebrow.c-coral { color: var(--coral-deep); }
   .eyebrow.c-blue { color: var(--blue-deep); }
- 
+
   .sec-title { font-size: clamp(28px, 3.6vw, 42px); margin-bottom: 18px; line-height: 1.08; }
   .sec-intro { font-size: 16px; color: var(--ink-soft); max-width: 640px; line-height: 1.75; margin-bottom: 48px; }
- 
+
   /* ============ BUTTONS ============ */
   .btn {
     display: inline-flex; align-items: center; gap: 9px;
@@ -242,7 +239,7 @@ Index · HTML
   .btn-outline:hover { border-color: var(--violet); color: var(--violet-deep); transform: translateY(-2px); }
   .btn-coral { background: var(--coral); color: #fff; box-shadow: 0 10px 22px -6px rgba(255,111,143,0.5); }
   .btn-coral:hover { background: var(--coral-deep); transform: translateY(-2px); }
- 
+
   /* ============ HERO ============ */
   #home {
     padding-top: 76px;
@@ -286,10 +283,10 @@ Index · HTML
     backdrop-filter: blur(4px);
   }
   .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
- 
+
   .hero-art { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
   .doodle { position: absolute; opacity: 0.85; }
- 
+
   /* ============ ABOUT ============ */
   #about .eyebrow { margin-bottom: 36px; }
   .about-grid { display: grid; grid-template-columns: 1fr 0.7fr; gap: 56px; align-items: start; }
@@ -315,7 +312,7 @@ Index · HTML
   .about-fact:first-of-type { border-top: none; }
   .about-fact-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--violet-deep); font-size: 13px; flex-shrink: 0; width: 26px; }
   .about-fact-text { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
- 
+
   /* ============ BUILDING (QUADRANTS) ============ */
   .quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .quad-card {
@@ -344,7 +341,7 @@ Index · HTML
   .q-coral .tag-pill { background: var(--blush); }
   .q-blue .tag-pill { background: var(--sky); }
   .q-sage .tag-pill { background: #EAF6EF; }
- 
+
   /* ============ PIN CARDS ============ */
   .pin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 22px; margin-bottom: 56px; }
   .pin-card {
@@ -376,7 +373,7 @@ Index · HTML
   }
   .pin-label { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); margin-bottom: 8px; }
   .pin-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.55; }
- 
+
   .chart-card {
     background: var(--paper);
     border-radius: var(--r-lg);
@@ -386,7 +383,7 @@ Index · HTML
   .chart-card h3 { font-size: 16px; margin-bottom: 6px; }
   .chart-card .chart-note { font-size: 12.5px; color: var(--ink-faint); margin-bottom: 22px; font-family: 'JetBrains Mono', monospace; }
   .chart-wrap-main { position: relative; height: 320px; }
- 
+
   /* ============ TIMELINE (EXPERIENCE) ============ */
   .timeline-v { display: flex; flex-direction: column; }
   .tl-row {
@@ -430,7 +427,7 @@ Index · HTML
   .tl-card ul { display: flex; flex-direction: column; gap: 8px; }
   .tl-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.6; padding-left: 18px; position: relative; }
   .tl-card li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
- 
+
   /* ============ EDUCATION HORIZONTAL ============ */
   .edu-track { position: relative; padding-top: 10px; }
   .edu-line { position: absolute; top: 51px; left: 0; right: 0; height: 2px; background: var(--line); }
@@ -442,7 +439,7 @@ Index · HTML
   .edu-card .edu-stage { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--coral-deep); margin-bottom: 8px; }
   .edu-card h3 { font-size: 15.5px; margin-bottom: 6px; line-height: 1.3; }
   .edu-card p { font-size: 13px; color: var(--ink-soft); }
- 
+
   /* ============ UNIVERSITY (U OF T CHAPTER) ============ */
   .uoft-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: stretch; }
   .uoft-card {
@@ -476,7 +473,7 @@ Index · HTML
   }
   .uoft-next h3 { font-size: 16px; }
   .uoft-next p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
- 
+
   /* ============ PROJECTS ============ */
   .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px; }
   .proj-card {
@@ -503,12 +500,12 @@ Index · HTML
   .proj-card ul { display: flex; flex-direction: column; gap: 9px; }
   .proj-card li { font-size: 14px; color: var(--ink-soft); line-height: 1.6; padding-left: 18px; position: relative; }
   .proj-card li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
- 
+
   .other-events { background: var(--paper); border-radius: var(--r-md); padding: 26px 28px; border: 1px dashed var(--line); }
   .other-events h4 { font-size: 14px; margin-bottom: 14px; color: var(--ink-soft); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
   .event-chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .event-chip { font-size: 13px; background: var(--lavender); color: var(--ink); padding: 8px 14px; border-radius: 10px; font-weight: 500; }
- 
+
   /* ============ CASE STUDIES ============ */
   .cs-card {
     background: var(--paper);
@@ -539,7 +536,7 @@ Index · HTML
   .cs-open-btn svg { width: 13px; height: 13px; }
   .cs-frame-wrap { background: #f3f3f3; max-height: 760px; overflow-y: auto; }
   .cs-frame-wrap iframe { width: 100%; border: 0; display: block; min-height: 1300px; }
- 
+
   /* ============ WRITING ============ */
   .write-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .write-card {
@@ -556,7 +553,7 @@ Index · HTML
   .write-arrow { width: 16px; height: 16px; color: var(--ink-faint); }
   .write-card h3 { font-size: 15.5px; line-height: 1.3; }
   .write-card p { font-size: 12.8px; color: var(--ink-soft); line-height: 1.55; }
- 
+
   /* ============ COURSES ============ */
   .course-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .course-card {
@@ -572,7 +569,7 @@ Index · HTML
   .course-card .c-3 { color: #5b48c4; }
   .course-card .c-4 { color: #FF5C35; }
   .course-topic { font-size: 12.5px; font-weight: 700; color: var(--ink); background: var(--lavender); padding: 6px 10px; border-radius: 8px; display: inline-block; }
- 
+
   /* ============ CONTACT ============ */
   #contact { background: linear-gradient(115deg, var(--lavender) 0%, var(--sky) 100%); text-align: center; }
   #contact .wrap { display: flex; flex-direction: column; align-items: center; }
@@ -580,7 +577,7 @@ Index · HTML
   #contact p.lead { font-size: 17px; color: var(--ink-soft); max-width: 480px; margin-bottom: 36px; }
   .contact-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
   .contact-meta { font-size: 13px; color: var(--ink-faint); font-family: 'JetBrains Mono', monospace; }
- 
+
   footer.site-foot {
     background: var(--lavender-deep);
     padding: 20px 64px;
@@ -589,14 +586,14 @@ Index · HTML
     color: var(--ink-faint);
     font-family: 'JetBrains Mono', monospace;
   }
- 
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 1080px) {
     .pin-grid { grid-template-columns: repeat(2, 1fr); }
     .write-grid { grid-template-columns: repeat(2, 1fr); }
     .course-row { grid-template-columns: repeat(2, 1fr); }
   }
- 
+
   @media (max-width: 980px) {
     .sidebar { display: none; }
     main { margin-left: 0; }
@@ -638,7 +635,7 @@ Index · HTML
     .tl-date { text-align: left; }
     .cs-frame-wrap { max-height: 560px; }
   }
- 
+
   @media (max-width: 560px) {
     section { padding: 56px 18px; }
     .pin-grid { grid-template-columns: 1fr; }
@@ -646,15 +643,15 @@ Index · HTML
     .cta-row { flex-direction: column; align-items: stretch; }
     .cs-frame-wrap { max-height: 460px; }
   }
- 
+
   .cs-inline-frame { max-height: 800px; overflow-y: auto; background: #fff; }
   .cs-inline-wrap { width: 100%; }
 </style>
 </head>
 <body>
- 
+
 <div class="layout">
- 
+
   <!-- ============ SIDEBAR ============ -->
   <aside class="sidebar">
     <div class="brand">
@@ -664,17 +661,17 @@ Index · HTML
         <div class="brand-role">Rotman Commerce, U of T</div>
       </div>
     </div>
- 
+
     <div class="grad-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"></path></svg>
       Class of 2030
     </div>
- 
+
     <div class="status-row">
       <span class="status-dot"></span>
       Open to opportunities
     </div>
- 
+
     <nav class="side-nav">
       <a href="#home" data-target="home"><span class="idx">01</span>Home</a>
       <a href="#about" data-target="about"><span class="idx">02</span>About</a>
@@ -689,7 +686,7 @@ Index · HTML
       <a href="#courses" data-target="courses"><span class="idx">11</span>Courses</a>
       <a href="#contact" data-target="contact"><span class="idx">12</span>Contact</a>
     </nav>
- 
+
     <div class="side-foot">
       <div class="side-foot-label">Get in touch</div>
       <div class="icon-row">
@@ -702,7 +699,7 @@ Index · HTML
       </div>
     </div>
   </aside>
- 
+
   <!-- ============ MOBILE NAV ============ -->
   <nav class="mobile-bar" id="mobileBar">
     <span class="m-brand">ZF</span>
@@ -719,15 +716,15 @@ Index · HTML
     <a href="#courses" data-target="courses">Courses</a>
     <a href="#contact" data-target="contact">Contact</a>
   </nav>
- 
+
   <!-- ============ MAIN ============ -->
   <main>
- 
+
     <!-- ============ HERO ============ -->
     <section id="home">
       <div class="hero-blob" style="width:340px; height:340px; background:var(--violet); top:-100px; right:-80px;"></div>
       <div class="hero-blob" style="width:260px; height:260px; background:var(--blue); bottom:-60px; left:0px;"></div>
- 
+
       <div class="wrap hero">
         <div class="hero-grid">
           <div>
@@ -750,7 +747,7 @@ Index · HTML
               </a>
             </div>
           </div>
- 
+
           <div class="hero-art">
             <svg viewBox="0 0 320 280" width="100%">
               <line x1="20" y1="230" x2="300" y2="230" stroke="#D9CFEF" stroke-width="2"></line>
@@ -773,7 +770,7 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ ABOUT ============ -->
     <section id="about" class="bg-blush">
       <div class="wrap">
@@ -806,7 +803,7 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ BUILDING ============ -->
     <section id="building" class="bg-sky">
       <div class="wrap">
@@ -865,14 +862,14 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ EXECUTION BY THE NUMBERS ============ -->
     <section id="numbers" class="bg-lavender">
       <div class="wrap">
         <div class="eyebrow c-violet">Execution by the Numbers</div>
         <h2 class="sec-title">Every number below is from something I actually ran.</h2>
         <p class="sec-intro">Not projections, not estimates. These came out of school societies, competitions, and one summer spent cold-emailing restaurant owners.</p>
- 
+
         <div class="pin-grid">
           <div class="pin-card" style="--tilt:-1.6deg; --tape: var(--violet);">
             <div class="pin-num">10,000+</div>
@@ -915,7 +912,7 @@ Index · HTML
             <div class="pin-desc">Drafted and closed with restaurants, cafes, and Liberty Books.</div>
           </div>
         </div>
- 
+
         <div class="chart-card">
           <h3>Scale of execution across projects</h3>
           <div class="chart-note">Logarithmic scale, since these numbers span two orders of magnitude</div>
@@ -923,7 +920,7 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ WORK EXPERIENCE ============ -->
     <section id="experience" class="bg-blush">
       <div class="wrap">
@@ -992,7 +989,7 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ EDUCATION ============ -->
     <section id="education" class="bg-sky">
       <div class="wrap">
@@ -1032,14 +1029,14 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ U OF T CHAPTER ============ -->
     <section id="uoft" class="bg-blush">
       <div class="wrap">
         <div class="eyebrow c-coral">At University</div>
         <h2 class="sec-title">Chapter one: my time at U of T so far.</h2>
         <p class="sec-intro">The first things I've taken on since starting at Rotman Commerce. This section grows as the year does.</p>
- 
+
         <div class="uoft-grid">
           <div class="uoft-card">
             <div class="uoft-head">
@@ -1061,14 +1058,14 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ PROJECT PORTFOLIO ============ -->
     <section id="projects" class="bg-lavender">
       <div class="wrap">
         <div class="eyebrow c-violet">Project Portfolio</div>
         <h2 class="sec-title">Hands-on projects I built from the ground up.</h2>
         <p class="sec-intro">These are different from the case studies below. Everything here is a project I ran in the real world, with real vendors, real budgets, and real deadlines.</p>
- 
+
         <div class="proj-grid">
           <div class="proj-card" style="--tilt:-0.6deg;">
             <div class="proj-head">
@@ -1097,7 +1094,7 @@ Index · HTML
             </ul>
           </div>
         </div>
- 
+
         <div class="other-events">
           <h4>Other events I've organized</h4>
           <div class="event-chip-row">
@@ -1108,14 +1105,14 @@ Index · HTML
         </div>
       </div>
     </section>
- 
+
     <!-- ============ CASE STUDIES ============ -->
     <section id="case-studies" class="bg-blush">
       <div class="wrap">
         <div class="eyebrow c-coral">Case Studies</div>
         <h2 class="sec-title">Two analytical projects I built to practice real business thinking.</h2>
         <p class="sec-intro">Both are fully interactive below, charts included. I built each one independently, outside of any class, to practice reading financial filings and breaking down a brand's strategy the way an analyst would.</p>
- 
+
         <div class="cs-card">
           <div class="cs-head">
             <div class="cs-head-left">
@@ -1130,11 +1127,11 @@ Index · HTML
           </div>
           <div class="cs-frame-wrap cs-inline-frame"><div class="cs-inline-wrap">
 <style scoped>
- 
+
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   :root {
     --navy:    #0D1B2A;
     --navy2:   #142236;
@@ -1147,9 +1144,9 @@ Index · HTML
     --mono: 'JetBrains Mono', monospace;
     --sans: 'Inter', sans-serif;
   }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--navy);
     color: var(--white);
@@ -1158,7 +1155,7 @@ Index · HTML
     line-height: 1.6;
     min-height: 100vh;
   }
- 
+
   /* ── HEADER ── */
   header {
     border-bottom: 1px solid var(--border);
@@ -1184,7 +1181,7 @@ Index · HTML
     border-radius: 3px;
     white-space: nowrap;
   }
- 
+
   /* ── HERO ── */
   .hero {
     padding: 72px 48px 56px;
@@ -1208,7 +1205,7 @@ Index · HTML
     max-width: 600px;
     line-height: 1.65;
   }
- 
+
   /* ── KEY STATS ── */
   .stats-row {
     display: grid;
@@ -1242,7 +1239,7 @@ Index · HTML
     color: var(--muted);
     margin-top: 6px;
   }
- 
+
   /* ── CHART SECTION ── */
   .chart-section {
     padding: 48px 48px 40px;
@@ -1285,21 +1282,21 @@ Index · HTML
   }
   .legend-dot.amber { background: var(--amber); }
   .legend-dot.slate { background: var(--slate); }
- 
+
   .chart-wrap {
     position: relative;
     width: 100%;
     height: 320px;
   }
   canvas#chart { width: 100% !important; height: 100% !important; }
- 
+
   .chart-note {
     margin-top: 16px;
     font-size: 12px;
     color: var(--muted);
     font-family: var(--mono);
   }
- 
+
   /* ── DATA TABLE ── */
   .table-section {
     padding: 48px 48px 40px;
@@ -1350,7 +1347,7 @@ Index · HTML
   .delta { color: var(--muted); font-size: 12px; }
   .up { color: #5DB87A; }
   .down { color: #E05C5C; }
- 
+
   /* ── ANALYSIS ── */
   .analysis-section {
     padding: 48px 48px 56px;
@@ -1411,7 +1408,7 @@ Index · HTML
     color: var(--white);
   }
   .hypothesis strong { color: var(--amber); font-weight: 600; }
- 
+
   /* ── FOOTER ── */
   footer {
     padding: 28px 48px;
@@ -1434,7 +1431,7 @@ Index · HTML
     border-radius: 3px;
     opacity: 0.8;
   }
- 
+
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
     header, .hero, .stat, .chart-section,
@@ -1444,18 +1441,18 @@ Index · HTML
     .analysis-section { grid-template-columns: 1fr; gap: 24px; }
     .analysis-section h2, .hypothesis { grid-column: 1; }
   }
- 
+
 </style>
 <header>
   <div class="eyebrow">Case Study · Canadian Retail Apparel · Gross Margin Analysis</div>
   <div class="source-tag">Sources: SEC EDGAR · Aritzia IR</div>
 </header>
- 
+
 <div class="hero">
   <h1>Two Canadian apparel giants.<br>One margin gap <em>closing fast.</em></h1>
   <p class="subtitle">Aritzia's gross margin expanded 6.4 percentage points over three fiscal years while Lululemon's contracted 2.6 points. This analysis maps where each company's cost structure is moving, and why the gap tells a more interesting story than the numbers alone.</p>
 </div>
- 
+
 <div class="stats-row">
   <div class="stat">
     <div class="stat-number amber">+6.4 pp</div>
@@ -1473,7 +1470,7 @@ Index · HTML
     <div class="stat-sub">Down from ~20 pp three years ago</div>
   </div>
 </div>
- 
+
 <div class="chart-section">
   <div class="section-label">Gross Margin % — Three-Year Trend</div>
   <div class="legend">
@@ -1485,7 +1482,7 @@ Index · HTML
   </div>
   <div class="chart-note">* Aritzia fiscal year ends ~Feb/Mar; Lululemon fiscal year ends ~Jan/Feb. Years labeled by fiscal year name.</div>
 </div>
- 
+
 <div class="table-section">
   <div class="section-label">Raw Data</div>
   <table>
@@ -1550,45 +1547,45 @@ Index · HTML
     </tbody>
   </table>
 </div>
- 
+
 <div class="analysis-section">
   <h2>What the data actually says</h2>
- 
+
   <div class="finding">
     <div class="finding-label"><span class="amber">Aritzia</span> — Why margins are expanding</div>
     <p>Aritzia's 6.4-point margin expansion over three years is unusually fast for a retailer its size. Their own disclosures attribute it to four specific levers: lower markdowns (meaning less unsold inventory being discounted), IMU (initial markup) improvements as they move to better-margin SKUs, lower warehousing costs, and a "smart spending initiative" cutting operational overhead. Notably, this is happening while they're aggressively opening new boutiques (usually a margin headwind), which makes the improvement more significant, not less.</p>
   </div>
- 
+
   <div class="finding lulu-finding">
     <div class="finding-label"><span class="slate">Lululemon</span> — Why margins are contracting</div>
     <p>Lululemon's absolute margin still towers above Aritzia's at 56.6%, but the direction matters: a 2.6-point drop in a single three-year window, combined with flat Americas comparable sales in FY2024, suggests they're facing either pricing pressure in their core US market or higher promotional spend to hold volume. Their gross profit dollars grew $698M over the same period, so this is a mix-shift and cost problem, not a revenue problem, which is arguably more fixable, but also harder to see coming.</p>
   </div>
- 
+
   <div class="hypothesis">
     <div class="h-label">Hypothesis</div>
     <p>The margin gap between Aritzia and Lululemon (historically around 20 percentage points) has narrowed to roughly <strong>12 points</strong> and appears structural rather than cyclical. Aritzia is not simply having a good year; they've systematically improved unit economics while scaling. Lululemon's contraction, meanwhile, likely reflects the cost of defending US market share as the athleisure category matures and competition intensifies. If Aritzia sustains its current trajectory another two to three fiscal years, the gross margin gap could compress to single digits, a remarkable outcome for a company that, four years ago, operated at margins closer to a typical mid-market retailer than a premium brand.</p>
   </div>
 </div>
- 
+
 <footer>
   <div class="footer-left">Built by Zoya Faraz · BCom, Rotman Commerce, U of T '30 · June 2026</div>
   <div class="footer-tag">Portfolio Project 1</div>
 </footer>
- 
+
 <!-- Chart script using Chart.js from CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 const ctx = document.getElementById('chart').getContext('2d');
- 
+
 // Data
 const aritziaData  = [38.5, 43.1, 44.9];
 const lululemonData = [58.3, 59.2, 56.6];
 const labels = ['Year 1', 'Year 2', 'Year 3'];
- 
+
 // Animation: draw lines in
 Chart.defaults.animation.duration = 1400;
 Chart.defaults.animation.easing = 'easeInOutQuart';
- 
+
 new Chart(ctx, {
   type: 'line',
   data: {
@@ -1665,18 +1662,18 @@ new Chart(ctx, {
 </script>
 </div>
 <script>(function(){
- 
+
 const ctx = document.getElementById('cs1-chart').getContext('2d');
- 
+
 // Data
 const aritziaData  = [38.5, 43.1, 44.9];
 const lululemonData = [58.3, 59.2, 56.6];
 const labels = ['Year 1', 'Year 2', 'Year 3'];
- 
+
 // Animation: draw lines in
 Chart.defaults.animation.duration = 1400;
 Chart.defaults.animation.easing = 'easeInOutQuart';
- 
+
 new Chart(ctx, {
   type: 'line',
   data: {
@@ -1750,10 +1747,10 @@ new Chart(ctx, {
     }
   }
 });
- 
+
 })();</script></div>
         </div>
- 
+
         <div class="cs-card">
           <div class="cs-head">
             <div class="cs-head-left">
@@ -1768,11 +1765,11 @@ new Chart(ctx, {
           </div>
           <div class="cs-frame-wrap cs-inline-frame"><div class="cs-inline-wrap">
 <style scoped>
- 
+
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   :root {
     --bg:       #FDF8FC;
     --bg2:      #FAF3F9;
@@ -1789,7 +1786,7 @@ new Chart(ctx, {
     --serif:    'DM Serif Display', serif;
     --sans:     'Inter', sans-serif;
   }
- 
+
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
@@ -1798,7 +1795,7 @@ new Chart(ctx, {
     font-size: 15px;
     line-height: 1.65;
   }
- 
+
   /* HEADER */
   header {
     background: var(--plum);
@@ -1830,7 +1827,7 @@ new Chart(ctx, {
     border-radius: 2px;
   }
   .tag.accent { border-color: var(--blush); color: var(--blush); }
- 
+
   /* HERO */
   .hero {
     background: var(--plum);
@@ -1879,7 +1876,7 @@ new Chart(ctx, {
     max-width: 580px;
     line-height: 1.75;
   }
- 
+
   /* INTRO STRIP */
   .intro-strip {
     display: grid;
@@ -1908,7 +1905,7 @@ new Chart(ctx, {
     font-weight: 500;
   }
   .intro-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
- 
+
   /* SECTION */
   .section {
     padding: 56px 52px 48px;
@@ -1940,7 +1937,7 @@ new Chart(ctx, {
     line-height: 1.75;
     margin-bottom: 40px;
   }
- 
+
   /* TIMELINE */
   .timeline { display: flex; flex-direction: column; gap: 0; }
   .tl-item {
@@ -1996,7 +1993,7 @@ new Chart(ctx, {
     padding: 3px 10px;
     border-radius: 2px;
   }
- 
+
   /* CHANNEL GRID */
   .channel-grid {
     display: grid;
@@ -2037,7 +2034,7 @@ new Chart(ctx, {
   }
   .channel-label { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
   .channel-desc { font-size: 13px; color: var(--ink); line-height: 1.65; }
- 
+
   /* PIVOT TABLE */
   .pivot-grid {
     display: grid;
@@ -2081,7 +2078,7 @@ new Chart(ctx, {
   .pivot-row-val { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--plum); }
   .pivot-row-val.good { color: #4a9e7a; }
   .pivot-row-val.warn { color: #c47a45; }
- 
+
   /* FRAMEWORK BOXES */
   .framework-grid {
     display: grid;
@@ -2104,14 +2101,14 @@ new Chart(ctx, {
   }
   .fw-title { font-size: 15px; font-weight: 600; color: var(--plum); margin-bottom: 10px; }
   .fw-body { font-size: 13px; color: var(--ink); line-height: 1.7; }
- 
+
   /* CHART */
   .chart-wrap { position: relative; width: 100%; height: 280px; }
   .chart-legend { display: flex; gap: 22px; margin-bottom: 20px; flex-wrap: wrap; }
   .legend-item { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
   .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
   .chart-note { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 12px; }
- 
+
   /* RECOMMENDATIONS */
   .rec-grid { display: flex; flex-direction: column; gap: 16px; }
   .rec-item {
@@ -2145,12 +2142,12 @@ new Chart(ctx, {
     padding: 3px 10px;
     border-radius: 2px;
   }
- 
+
   /* SOURCES */
   .sources-list { display: flex; flex-direction: column; gap: 8px; }
   .source-item { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; gap: 12px; }
   .source-num { color: var(--border); flex-shrink: 0; }
- 
+
   /* FOOTER */
   footer {
     background: var(--plum);
@@ -2163,14 +2160,14 @@ new Chart(ctx, {
   }
   .footer-l { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.5); }
   .footer-r { font-family: var(--mono); font-size: 11px; color: var(--blush); border: 1px solid var(--blush); padding: 5px 12px; border-radius: 2px; opacity: 0.8; }
- 
+
   @media (max-width: 760px) {
     header, .hero, .intro-cell, .section, footer { padding-left: 24px; padding-right: 24px; }
     .intro-strip, .channel-grid, .framework-grid, .pivot-grid { grid-template-columns: 1fr; }
     .intro-cell { border-right: none; border-bottom: 1px solid var(--border); }
     .hero::after { display: none; }
   }
- 
+
 </style>
 <header>
   <div class="hdr-left">
@@ -2182,13 +2179,13 @@ new Chart(ctx, {
     <div class="tag accent">Portfolio Project 02</div>
   </div>
 </header>
- 
+
 <div class="hero">
   <div class="hero-eyebrow">Glossier Inc. &mdash; Brand &amp; Channel Strategy Analysis</div>
   <h1>How a beauty blog<br>built a <em>$1.8 billion brand,</em><br>then had to reinvent it.</h1>
   <p>Glossier spent nine years proving that community could replace advertising. Then rising customer acquisition costs forced the brand to enter the very retail system it was built to disrupt. This case study maps what actually changed, what it cost, and whether the bet paid off.</p>
 </div>
- 
+
 <div class="intro-strip">
   <div class="intro-cell">
     <div class="intro-val">$1.8B</div>
@@ -2211,13 +2208,13 @@ new Chart(ctx, {
     <div class="intro-sub">Wholesale became biggest growth engine</div>
   </div>
 </div>
- 
+
 <!-- SECTION 1: ORIGIN -->
 <div class="section alt">
   <div class="section-eyebrow"><span>01</span> &mdash; Origin &amp; Brand Architecture</div>
   <div class="section-title">The blog that became a brand</div>
   <div class="section-intro">Glossier is one of the few companies that started by building an audience before building a product. Understanding how it got to $1.8B requires starting at the blog, because everything downstream, the brand voice, the product strategy, the community flywheel, was designed around what readers were already saying.</div>
- 
+
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-year">2010<div class="tl-dot"></div></div>
@@ -2268,13 +2265,13 @@ new Chart(ctx, {
     </div>
   </div>
 </div>
- 
+
 <!-- SECTION 2: CHANNELS -->
 <div class="section">
   <div class="section-eyebrow"><span>02</span> &mdash; Channel &amp; Social Strategy</div>
   <div class="section-title">How Glossier built a marketing engine without a marketing budget</div>
   <div class="section-intro">Before the Sephora pivot, Glossier's marketing was notable specifically because it did not look like marketing. The brand turned customers into content creators, comment sections into product briefs, and UGC into a free distribution channel. The numbers below reflect where that strategy stood at its peak.</div>
- 
+
   <div class="channel-grid">
     <div class="channel-card">
       <div class="channel-name">Instagram</div>
@@ -2314,13 +2311,13 @@ new Chart(ctx, {
     </div>
   </div>
 </div>
- 
+
 <!-- SECTION 3: THE PIVOT -->
 <div class="section alt">
   <div class="section-eyebrow"><span>03</span> &mdash; The DTC to Wholesale Pivot</div>
   <div class="section-title">What actually changed, and what it cost</div>
   <div class="section-intro">The Sephora pivot was not just a distribution decision. It changed Glossier's customer acquisition model, its brand accessibility, its margin structure, and the implicit promise it had made to its original community. The table below shows the before and after across the most relevant marketing and commercial dimensions.</div>
- 
+
   <div class="pivot-grid">
     <div class="pivot-card">
       <div class="pivot-card-header before"><div class="dot"></div>Before Sephora (pre-2023): Pure DTC</div>
@@ -2350,13 +2347,13 @@ new Chart(ctx, {
     </div>
   </div>
 </div>
- 
+
 <!-- SECTION 4: CHART -->
 <div class="section">
   <div class="section-eyebrow"><span>04</span> &mdash; Revenue Trajectory</div>
   <div class="section-title">The numbers behind the pivot</div>
   <div class="section-intro">Glossier is a private company and does not publish audited financials. The figures below are compiled from disclosed projections, press reports, and analyst estimates. They illustrate the general trajectory, not precise audited results.</div>
- 
+
   <div class="chart-legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--rose)"></div>Est. Total Revenue ($M USD)</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--lilac)"></div>DTC (glossier.com) Revenue ($M USD)</div>
@@ -2364,13 +2361,13 @@ new Chart(ctx, {
   <div class="chart-wrap"><canvas id="revenueChart"></canvas></div>
   <div class="chart-note">* All figures estimated. Sources: Contrary Research, CanvasBusinessModel, Latterly.org, Beauty Independent. Glossier has not publicly disclosed audited annual revenues.</div>
 </div>
- 
+
 <!-- SECTION 5: FRAMEWORK -->
 <div class="section alt">
   <div class="section-eyebrow"><span>05</span> &mdash; Marketing Framework Analysis</div>
   <div class="section-title">Four lenses on what Glossier actually did</div>
   <div class="section-intro">Marketing case studies typically analyse a brand through standard frameworks: the 4 Ps, a SWOT, positioning, and the customer acquisition model. Below I apply each to Glossier's omnichannel transition specifically, rather than the brand overall.</div>
- 
+
   <div class="framework-grid">
     <div class="fw-box">
       <div class="fw-label">The 4 Ps &mdash; After the Pivot</div>
@@ -2411,13 +2408,13 @@ new Chart(ctx, {
     </div>
   </div>
 </div>
- 
+
 <!-- SECTION 6: RECOMMENDATIONS -->
 <div class="section">
   <div class="section-eyebrow"><span>06</span> &mdash; My Analysis &amp; Recommendations</div>
   <div class="section-title">Three things I would do differently if I were advising Glossier right now</div>
   <div class="section-intro">This section is my own view, not a summary of existing reporting. A marketing case study should end with a position, not just a description of what already happened. Below are three specific recommendations with a rationale for each, based on the data and framework analysis above.</div>
- 
+
   <div class="rec-grid">
     <div class="rec-item">
       <div class="rec-num">01</div>
@@ -2445,7 +2442,7 @@ new Chart(ctx, {
     </div>
   </div>
 </div>
- 
+
 <!-- SECTION 7: SOURCES -->
 <div class="section alt">
   <div class="section-eyebrow"><span>07</span> &mdash; Data Sources</div>
@@ -2464,12 +2461,12 @@ new Chart(ctx, {
     <div class="source-item"><span class="source-num">[12]</span> Marketing Monk: Glossier SWOT &amp; 4Ps Marketing Strategy, 2025</div>
   </div>
 </div>
- 
+
 <footer>
   <div class="footer-l">Zoya Faraz &middot; Rotman Commerce, University of Toronto &middot; Class of 2030 &middot; Built June 2026</div>
   <div class="footer-r">Portfolio Project 02 of 04</div>
 </footer>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 new Chart(document.getElementById('revenueChart'), {
@@ -2540,7 +2537,7 @@ new Chart(document.getElementById('revenueChart'), {
 </script>
 </div>
 <script>(function(){
- 
+
 new Chart(document.getElementById('revenueChart'), {
   type: 'bar',
   data: {
@@ -2606,12 +2603,12 @@ new Chart(document.getElementById('revenueChart'), {
     }
   }
 });
- 
+
 })();</script></div>
         </div>
       </div>
     </section>
- 
+
     <!-- ============ WRITING ============ -->
     <section id="writing" class="bg-sky">
       <div class="wrap">
@@ -2670,7 +2667,7 @@ new Chart(document.getElementById('revenueChart'), {
         </div>
       </div>
     </section>
- 
+
     <!-- ============ COURSES ============ -->
     <section id="courses" class="bg-lavender">
       <div class="wrap">
@@ -2696,7 +2693,7 @@ new Chart(document.getElementById('revenueChart'), {
         </div>
       </div>
     </section>
- 
+
     <!-- ============ CONTACT ============ -->
     <section id="contact">
       <div class="wrap">
@@ -2716,18 +2713,18 @@ new Chart(document.getElementById('revenueChart'), {
         <div class="contact-meta">+92 333 2279778</div>
       </div>
     </section>
- 
+
     <footer class="site-foot">Built and designed by Zoya Faraz, 2026</footer>
- 
+
   </main>
 </div>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
   // ============ SMOOTH SCROLL + ACTIVE NAV ============
   const allNavLinks = document.querySelectorAll('.side-nav a, .mobile-bar a');
   const sections = document.querySelectorAll('main section');
- 
+
   allNavLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -2736,7 +2733,7 @@ new Chart(document.getElementById('revenueChart'), {
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
- 
+
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -2747,9 +2744,9 @@ new Chart(document.getElementById('revenueChart'), {
       }
     });
   }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
- 
+
   sections.forEach(s => obs.observe(s));
- 
+
   // ============ EXECUTION CHART ============
   const execCtx = document.getElementById('execChart');
   if (execCtx) {
@@ -2791,10 +2788,9 @@ new Chart(document.getElementById('revenueChart'), {
       }
     });
   }
- 
+
   // Case studies are now inlined directly in the HTML
 </script>
- 
+
 </body>
 </html>
- 
